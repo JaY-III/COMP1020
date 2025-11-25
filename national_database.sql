@@ -47,3 +47,5 @@ bid_status ENUM('Draft', 'Open', 'Closed', 'Evaluating', 'Awarded', 'Cancelled')
 bid_opening_date DATE,
 bid_submission_deadline DATE
 );
+
+discribe tables;
