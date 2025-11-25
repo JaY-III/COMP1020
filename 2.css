@@ -1,0 +1,158 @@
+/* GENERAL RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* HERO SECTION */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 60px 8%;
+    gap: 40px;
+}
+
+.hero-text h2 {
+    font-size: 35px;
+    font-weight: bold;
+    color: #2f5fa4;
+    margin-bottom: 15px;
+}
+
+.hero-text p {
+    margin-bottom: 15px;
+    max-width: 500px;
+}
+
+.hero-btns a {
+    display: inline-block;
+    margin-right: 15px;
+    padding: 10px 20px;
+    background: #2f5fa4;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.hero img {
+    width: 400px;
+    height: auto;
+    background: #ccc; /* placeholder if no image */
+}
+
+/* TOP BAR */
+.top-bar {
+    background: #2f5fa4;
+    color: white;
+    padding: 12px 0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    font-size: 14px;
+}
+
+/* ABOUT SECTION */
+.about {
+    padding: 70px 8%;
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+}
+
+.about-info h2 {
+    font-size: 30px;
+    margin-bottom: 15px;
+    color: #2f5fa4;
+}
+
+.about-info p {
+    margin-bottom: 15px;
+}
+
+.stats {
+    display: flex;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+.stat {
+    font-size: 22px;
+    font-weight: bold;
+    color: #2f5fa4;
+    text-align: center;
+}
+
+/* SERVICES SECTION */
+.services {
+    text-align: center;
+    padding: 80px 8%;
+    background: #f9f9f9;
+}
+
+.services h2 {
+    font-size: 28px;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+.service-boxes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.service-box {
+    background: #e4edf7;
+    padding: 30px 20px;
+    border-radius: 6px;
+}
+
+.service-box h3 {
+    color: #2f5fa4;
+    margin-bottom: 10px;
+}
+
+/* PROCESS SECTION */
+.process {
+    padding: 80px 8%;
+    background: white;
+    text-align: center;
+}
+
+.process h2 {
+    margin-bottom: 40px;
+    color: #2f5fa4;
+}
+
+.process-steps {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.step {
+    background: #e4edf7;
+    padding: 25px;
+    width: 22%;
+    border-radius: 6px;
+}
+
+.step h3 {
+    font-size: 30px;
+    color: #2f5fa4;
+    margin-bottom: 8px;
+}
