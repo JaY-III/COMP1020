@@ -31,7 +31,7 @@ project_id INT PRIMARY KEY AUTO_INCREMENT,
 project_name VARCHAR(100) NOT NULL,
 project_management VARCHAR(100),
 project_status ENUM('Planned', 'In-Progress', 'Completed') DEFAULT 'Planned',
-budget DECIMAL(15,2),
+budget VARCHAR(100),
 winning_bidder INT, FOREIGN KEY (winning_bidder) REFERENCES Contractors(contractor_id) ON DELETE CASCADE,
 project_hq VARCHAR(100)
 );
