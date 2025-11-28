@@ -15,9 +15,9 @@ city VARCHAR(100) NOT NULL
 CREATE TABLE IF NOT EXISTS Provinces (
 province_id INT PRIMARY KEY AUTO_INCREMENT,
 province_name ENUM('Alberta', 'British Columbia', 'Manitoba', 'New Brunswick', 'Newfoundland and Labrador', 'Nova Scotia', 'Ontario', 'Prince Edward Island', 'Quebec', 'Saskatchewan', 'Northwest Territories', 'Nunavut', 'Yukon') NOT NULL,
-indigenous_land_overlap BOOLEAN,
-requires_environmental_review BOOLEAN,
-environmental_grade ENUM('Low', 'Moderate', 'High'),
+-- indigenous_land_overlap BOOLEAN,
+-- requires_environmental_review BOOLEAN,
+--  environmental_grade ENUM('Low', 'Moderate', 'High'),
 construction_start DATE,
 construction_end DATE,
 median_labor_cost INT,
@@ -48,4 +48,4 @@ bid_opening_date DATE,
 bid_submission_deadline DATE
 );
 
-discribe tables;
+SHOW TABLES;
