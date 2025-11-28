@@ -1,5 +1,25 @@
 USE national_infrastructure;
 
 INSERT INTO Projects (project_name, project_management, project_status, budget, winning_bidder, project_hq) VALUES
-( ),
-( );
+('North Coast Transmission Line', '---mgmt', 'Planned', '$6 billion', '---winbid', 'Northwest British Columbia'),
+('Northwest Critical Conservation Corridor', '---mgmt', 'Planned', '$6 billion', '---winbid', 'Kitimat, British Columbia'),
+('Ksi Lisims LNG', '---mgmt', 'Planned', '$10 billion', '---winbid', 'Pearse Island, British Columbia'),
+('Canada Nickel’s Crawford Project', '---mgmt', 'Planned', '$6.8 billion', '---winbid', 'Timmins, Ontario'),
+('Nouveau Monde Graphite Matawinie Mine', '---mgmt', 'Planned', '$421 million', '---winbid', 'Saint-Michel-des-Saints, Québec'),
+('Northcliff Resources’ Sisson Mine', '---mgmt', 'Planned', '$579 million', '---winbid', 'Sisson Brook, New Brunswick'),
+('Iqaluit Nukkiksautiit Hydro Project', '---mgmt', 'Planned', '$500 million', '---winbid', 'Iqaluit, Nunavut'),
+('Darlington New Nuclear Project', '---mgmt', 'Planned', '$20.9 billion', '---winbid', 'Bowmanville, Ontario'),
+('Contrecœur Terminal Container Project', '---mgmt', 'Planned', '$2.3 billion', '---winbid', 'Contrecœur, Québec'),
+('McIlvenna Bay Foran Copper Mine Project', '---mgmt', 'In-Progress', '$1.1 billion', '---winbid', 'East-Central Saskatchewan'),
+('Red Chris Mine expansion', '---mgmt', 'In-Progress', '$2.6 billion', '---winbid', 'Northwest British Columbia'),
+('Critical Minerals Strategy', '---mgmt', 'In-Progress', '$3.8 billion', '---winbid', 'Copper Cliff, Ontario'),
+('Wind West Atlantic Energy', '---mgmt', 'In-Progress', '$60 billion', '---winbid', 'Halifax, Nova Scotia'),
+('Pathways Plus', '---mgmt', 'In-Progress', '$16.5 billion', '---winbid', 'Wetaskiwin, Alberta'),
+('Arctic Economic and Security Corridor', '---mgmt', 'In-Progress', '$1 billion', '---winbid', 'Northwest Territories'),
+('Port of Churchill Plus', '---mgmt', 'In-Progress', '$262.5 million', '---winbid', 'Churchill, Manitoba'),
+('Alto High-Speed Rail', '---mgmt', 'In-Progress', '$90 billion', '---winbid', 'Toronto, Ontario'),
+('Trans Mountain Expansion Project', '---mgmt', 'Completed', '$34.2 billion', '---winbid', 'Edmonton, Alberta'),
+('National War Memorial', '---mgmt', 'Completed', '$5 million', '---winbid', 'Ottawa, Ontario'),
+('Burlington Canal Lift Bridge', '---mgmt', 'Completed', '$21 million', '---winbid', 'Burlington, Ontario'),
+('Carling Campus', '---mgmt', 'Completed', '$1.5 billion', '---winbid', 'Kanata, Ontario'),
+('Voltigeurs de Québec Armoury', '---mgmt', 'Completed', '$104 million', '---winbid', 'Québec, Québec');
