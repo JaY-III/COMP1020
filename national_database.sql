@@ -23,7 +23,7 @@ construction_end DATE,
 median_labor_cost INT,
 median_material_cost INT,
 infrastructure_ministry_contact VARCHAR(150),
-regional_office VARCHAR(100)
+regional_office VARCHAR(150)
 );
 
 CREATE TABLE IF NOT EXISTS Projects (
