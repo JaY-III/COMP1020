@@ -20,3 +20,10 @@ INSERT INTO Contractors (company_name, phone_number, email_address, street_num, 
 ('Drew Deck & Construction', '(+1)437-8509', 'drewdeckcanada@gmail.com', 'unit 236', 'Queen Street', 'Kingston'),
 ('Jordan Construction', '(+1)431-8556', 'contactjordancontruction@gmail.com', 'unit 458', 'Princess Street', 'Kingston'),
 ('Polar Doors & Windows', '(+1)341-2144', 'service@polar.com', '257', 'Merville Rd', 'Ottawa');
+
+('Bad construction', '(+1)555-5567', 'Badcontruction@gmail.com', '123', 'Green Street', 'Brampton'),
+('Failed construction', '(+1)555-4557', 'failedccontruction@gmail.com', '456', 'Red Street', 'Belleville'),
+('Sorry construction', '(+1)555-4555', 'sorrycontruction@gmail.com', '789', 'Blue Street', 'Hunstville'),
+('Try again construction', '(+1)555-5565', 'tryagaincontruction@gmail.com', '111', 'Orange Street', 'Corbyville'),
+('Next Time construction', '(+1)555-4555', 'Nexttimecontruction@gmail.com', '222', 'Purple Street', 'Picton'),
+('Nope construction', '(+1)555-5557', 'Nopecontruction@gmail.com', '333', 'Yellow Street', 'Trenton');
