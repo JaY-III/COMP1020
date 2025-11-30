@@ -23,3 +23,14 @@ INSERT INTO Tenders (contractor_id, project_id, province_id, bid_status, bid_ope
 (17, 20, 7, 'Awarded', '2011-02-25', '2017-07-09'),
 (13, 21, 7, 'Awarded', '2018-06-18', '2021-12-05'),
 (15, 22, 9, 'Awarded', '2017-03-02', '2020-10-04');
+
+-- losing bids
+INSERT INTO Tenders (contractor_id, project_id, province_id, bid_status, bid_opening_date, bid_submission_deadline, bid_value)VALUES
+(20, 11, 2, 'Cancelled', '2019-03-26', '2024-09-16', '2.8 billion'),
+(21, 12, 7, 'Closed', '2018-09-21', '2022-06-08', '4.2 billion'),
+(22, 13, 6, 'Closed', '2022-12-11', '2025-04-19', '85 billion'),
+(23, 14, 1, 'Cancelled', '2019-07-10', '2023-03-26', '25.2 billion'),
+(24, 15, 11, 'Evaluating', '2015-02-17', '2019-03-17', '1.2 billion'),
+(25, 16, 3, 'Cancelled', '2016-12-04', '2019-06-05', '365.2 million'),
+(22, 17, 7, 'Evaluating', '2020-02-08', '2025-05-20', '98.3 million'),
+(21, 18, 1, 'Closed', '2012-09-30', '2016-12-13', '44.3 billion');
