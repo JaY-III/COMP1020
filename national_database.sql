@@ -37,5 +37,5 @@ bid_value INT,
 bid_status ENUM('Draft', 'Open', 'Closed', 'Evaluating', 'Awarded', 'Cancelled'),
 bid_opening_date DATE,
 bid_submission_deadline DATE,
-bid_value  
+bid_value DECIMAL(15, 2)
 );
