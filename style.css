@@ -1,0 +1,272 @@
+ body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f7fc;
+        }
+         .logo {
+    font-size: 28px;
+    font-weight: 800;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+}
+
+.logo .icon {
+    background: linear-gradient(135deg, #4ea8ff, #9bc8ff);
+    color: white;
+    padding: 10px 14px;
+    border-radius: 50%;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(78, 168, 255, 0.6), 0 0 10px rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Hover effect */
+.logo .icon:hover {
+    transform: rotate(20deg) scale(1.2);
+    box-shadow: 0 6px 20px rgba(78, 168, 255, 0.8), 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+        /* HEADER */
+        header {
+            background: #0b1b3f;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+        header ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            margin: 0;
+            padding: 0;
+        }
+        header ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        header ul li a:hover {
+            color: #4ea8ff;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(to right, #0b1b3f 60%, #1b2c53);
+            color: white;
+            padding: 70px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .hero h1 {
+            font-size: 45px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+        .hero p {
+            max-width: 450px;
+        }
+        .hero button {
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: #4ea8ff;
+            border: none;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        /* ABOUT */
+        .about {
+            background: #ffffff;
+            padding: 60px 40px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .about-text {
+            max-width: 450px;
+        }
+        .about h2 {
+            color: #0b1b3f;
+        }
+
+        /* SERVICES */
+        .services {
+            padding: 60px 40px;
+        }
+        .services h2 {
+            color: #0b1b3f;
+        }
+        .service-boxes {
+            display: flex;
+            gap: 25px;
+            margin-top: 30px;
+        }
+        .service-box {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #d5d9e5;
+            width: 30%;
+        }
+
+        /* WORK PROCESS */
+        .process {
+            background: #ffffff;
+            padding: 60px 40px;
+        }
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        .step {
+            text-align: center;
+            width: 23%;
+        }
+        /* about us page */
+         body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f7fc;
+        }
+
+        /* HEADER */
+        header {
+            background: #0b1b3f;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+        header ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            margin: 0;
+            padding: 0;
+        }
+        header ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        header ul li a:hover {
+            color: #4ea8ff;
+        }
+
+        /* HERO TITLE */
+        .hero-title {
+            background: #0b1b3f;
+            color: white;
+            padding: 70px 40px;
+            text-align: center;
+        }
+        .hero-title h1 {
+            margin-bottom: 10px;
+            font-size: 48px;
+        }
+
+        /* ABOUT SECTION */
+        .about-section {
+            display: flex;
+            justify-content: space-between;
+            padding: 60px 40px;
+            background: white;
+        }
+        .about-text {
+            max-width: 500px;
+        }
+        .about-text h2 {
+            color: #0b1b3f;
+        }
+
+        /* STATS BAR */
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            padding: 40px;
+            background: #0b1b3f;
+            color: white;
+        }
+        .stats div {
+            text-align: center;
+        }
+        .stats h2 {
+            margin: 0;
+            font-size: 35px;
+        }
+
+        /* MISSION SECTION */
+        .mission-box {
+            padding: 60px 40px;
+            background: white;
+        }
+        .mission-box h2 {
+            color: #0b1b3f;
+        }
+        .mission-box p {
+            max-width: 600px;
+        }
+
+        /* TEAM SECTION */
+        .team-section {
+            padding: 60px 40px;
+        }
+        .team-section h2 {
+            color: #0b1b3f;
+        }
+        .team-members {
+            margin-top: 30px;
+            display: flex;
+            gap: 25px;
+        }
+        .team-card {
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            width: 30%;
+            text-align: center;
+            border: 1px solid #d5d9e5;
+        }
+        .logo {
+    font-size: 28px;
+    font-weight: 800;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+}
+
+.logo .icon {
+    background: linear-gradient(135deg, #4ea8ff, #9bc8ff);
+    color: white;
+    padding: 10px 14px;
+    border-radius: 50%;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(78, 168, 255, 0.6), 0 0 10px rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Hover effect */
+.logo .icon:hover {
+    transform: rotate(20deg) scale(1.2);
+    box-shadow: 0 6px 20px rgba(78, 168, 255, 0.8), 0 0 15px rgba(255, 255, 255, 0.3);
+}
+        
