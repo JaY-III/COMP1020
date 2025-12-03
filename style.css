@@ -845,58 +845,7 @@
 
 
 /* planned and progress css */
-header {
-     background: #0b1b3f;
-     padding: 20px 40px;
-     display: flex;
-     justify-content: space-between;
-     align-items: center;
-     color: white;
- }
-
- header ul {
-     list-style: none;
-     display: flex;
-     gap: 25px;
-     margin: 0;
-     padding: 0;
- }
-
- header ul li a {
-     color: white;
-     text-decoration: none;
-     font-weight: 500;
- }
-
- header ul li a:hover {
-     color: #4ea8ff;
- }
-.logo {
-    font-size: 28px;
-    font-weight: 800;
-    color: white;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    letter-spacing: 1.2px;
-    text-transform: uppercase;
-}
-
-.logo .icon {
-    background: linear-gradient(135deg, #4ea8ff, #9bc8ff);
-    color: white;
-    padding: 10px 14px;
-    border-radius: 50%;
-    font-size: 22px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 15px rgba(78, 168, 255, 0.6), 0 0 10px rgba(255, 255, 255, 0.2);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-/* Hover effect */
-.logo .icon:hover {
+/*.logo .icon:hover {
     transform: rotate(20deg) scale(1.2);
     box-shadow: 0 6px 20px rgba(78, 168, 255, 0.8), 0 0 15px rgba(255, 255, 255, 0.3);
 }
@@ -934,6 +883,9 @@ header {
         }
         a:hover {
             text-decoration: underline;
-        }
+        } */
 
         
+  
+
+
