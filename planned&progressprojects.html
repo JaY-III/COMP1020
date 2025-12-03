@@ -20,29 +20,96 @@
             <li><a href="contact.html">Contact Us</a></li>
         </ul>
     </header>
+<h1>Infrastructure Projects Overview</h1>
+    <h3>This page shows all planned and in-progress infrastructure projects with their details.</h3>
 
-<div class="container">
-    <h2>In-Progress Projects</h2>
-    <table>
-        <tr><th>ID</th><th>Title</th><th>Status</th><th>Category</th><th>Start Date</th></tr>
-        <tr><td>1</td><td>Network Upgrade</td><td>In Progress</td><td>Infrastructure</td><td>2024-05-01</td></tr>
-        <tr><td>2</td><td>Website Redesign</td><td>In Progress</td><td>Web Development</td><td>2024-06-15</td></tr>
-        <tr><td>3</td><td>Database Optimization</td><td>In Progress</td><td>Database</td><td>2024-07-01</td></tr>
-        <tr><td>4</td><td>Cloud Migration</td><td>In Progress</td><td>Cloud</td><td>2024-08-10</td></tr>
-        <tr><td>5</td><td>Security Audit</td><td>In Progress</td><td>Security</td><td>2024-09-05</td></tr>
-    </table>
-
+    <!-- Planned Projects Table -->
     <h2>Planned Projects</h2>
-    <table>
-        <tr><th>ID</th><th>Title</th><th>Status</th><th>Start Date</th><th>End Date</th></tr>
-        <tr><td>1</td><td>App Development</td><td>Planned</td><td>2024-10-01</td><td>2025-02-01</td></tr>
-        <tr><td>2</td><td>AI System Integration</td><td>Planned</td><td>2024-11-15</td><td>2025-03-15</td></tr>
-        <tr><td>3</td><td>Server Expansion</td><td>Planned</td><td>2024-12-01</td><td>2025-04-01</td></tr>
-        <tr><td>4</td><td>Mobile Optimization</td><td>Planned</td><td>2025-01-10</td><td>2025-05-10</td></tr>
-        <tr><td>5</td><td>Cybersecurity Training</td><td>Planned</td><td>2025-02-20</td><td>2025-06-20</td></tr>
+    <table id="planned-table">
+        <thead>
+            <tr>
+                <th>Project ID</th>
+                <th>Project Name</th>
+                <th>Project Status</th>
+                <th>Budget</th>
+                <th>Winning Bidder</th>
+                <th>Project HQ</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
     </table>
-</div>
+
+    <!-- In-Progress Projects Table -->
+    <h2>In-Progress Projects</h2>
+    <table id="inprogress-table">
+        <thead>
+            <tr>
+                <th>Project ID</th>
+                <th>Project Name</th>
+                <th>Project Status</th>
+                <th>Budget</th>
+                <th>Winning Bidder</th>
+                <th>Project HQ</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <!-- Inline JavaScript -->
+    <script>
+        // --- Planned Projects  ---
+        const getJSONValue = (obj, key) => obj[key] !== undefined ? obj[key] : '';
+
+        fetch('https://raw.githubusercontent.com/JaY-III/COMP1020/main/data-Planned.json')
+            .then(res => res.json())
+            .then(data => {
+                const tableBody = document.querySelector('#planned-table tbody');
+                data.forEach(project => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${getJSONValue(project, 'id')}</td>
+                        <td>${getJSONValue(project, 'name')}</td>
+                        <td>${getJSONValue(project, 'status')}</td>
+                        <td>${getJSONValue(project, 'budget')}</td>
+                        <td>${getJSONValue(project, 'winningBidder')}</td>
+                        <td>${getJSONValue(project, 'projectHQ')}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            })
+            .catch(err => console.error('Error fetching Planned Projects:', err));
+
+        // --- In-Progress Projects ---
+        const getXMLText = (parent, tag) => {
+            const el = parent.getElementsByTagName(tag)[0];
+            return el ? el.textContent : '';
+        };
+
+        fetch('https://raw.githubusercontent.com/JaY-III/COMP1020/main/data-In-Progress.xml')
+            .then(res => res.text())
+            .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+            .then(xml => {
+                const tableBody = document.querySelector('#inprogress-table tbody');
+                const projects = xml.getElementsByTagName('Project');
+
+                Array.from(projects).forEach(project => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${getXMLText(project, 'project_id')}</td>
+                        <td>${getXMLText(project, 'project_name')}</td>
+                        <td>${getXMLText(project, 'project_status')}</td>
+                        <td>${getXMLText(project, 'budget')}</td>
+                        <td>${getXMLText(project, 'winning_bidder')}</td>
+                        <td>${getXMLText(project, 'project_hq')}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            })
+            .catch(err => console.error('Error fetching In-Progress Projects:', err));
+    </script>
+
 
 </body>
 </html>
+
 
