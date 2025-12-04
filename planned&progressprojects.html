@@ -84,7 +84,7 @@
         };
 
         // --- Fetch XML (In-Progress Projects) ---
-        fetch('https://raw.githubusercontent.com/JaY-III/COMP1020/main/data-In-Progress.xml')
+        fetch('https://jay-iii.github.io/COMP1020/data-In-Progress.xml')
             .then(res => res.text())
             .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
             .then(xml => {
@@ -108,3 +108,4 @@
     </script>
 </body>
 </html>
+
