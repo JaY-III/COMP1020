@@ -60,7 +60,7 @@
         // --- Planned Projects  ---
         const getJSONValue = (obj, key) => obj[key] !== undefined ? obj[key] : '';
 
-        fetch('https://raw.githubusercontent.com/JaY-III/COMP1020/main/data-Planned.json')
+       fetch('https://raw.githubusercontent.com/JaY-III/COMP1020/main/data-Planned.json')
             .then(res => res.json())
             .then(data => {
                 const tableBody = document.querySelector('#planned-table tbody');
@@ -111,5 +111,6 @@
 
 </body>
 </html>
+
 
 
