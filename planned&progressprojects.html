@@ -20,17 +20,13 @@
             <li><a href="contact.html">Contact Us</a></li>
         </ul>
     </header>
-<h1>Infrastructure Projects Overview</h1>
-    <h3>This page shows all planned and in-progress infrastructure projects with their details.</h3>
-
-    <!-- Planned Projects Table -->
-    <h2>Planned Projects</h2>
+<h2>Planned Projects (JSON)</h2>
     <table id="planned-table">
         <thead>
             <tr>
-                <th>Project ID</th>
-                <th>Project Name</th>
-                <th>Project Status</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Status</th>
                 <th>Budget</th>
                 <th>Winning Bidder</th>
                 <th>Project HQ</th>
@@ -39,14 +35,13 @@
         <tbody></tbody>
     </table>
 
-    <!-- In-Progress Projects Table -->
-    <h2>In-Progress Projects</h2>
+    <h2>In-Progress Projects (XML)</h2>
     <table id="inprogress-table">
         <thead>
             <tr>
-                <th>Project ID</th>
-                <th>Project Name</th>
-                <th>Project Status</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Status</th>
                 <th>Budget</th>
                 <th>Winning Bidder</th>
                 <th>Project HQ</th>
@@ -57,10 +52,11 @@
 
     <!-- Inline JavaScript -->
     <script>
-        // --- Planned Projects  ---
+       
         const getJSONValue = (obj, key) => obj[key] !== undefined ? obj[key] : '';
 
-      fetch('https://raw.githubusercontent.com/JaY-III/COMP1020/nanaaishatmohammed66-patch-1/data-Planned.json')
+        // --- Fetch JSON (Planned Projects) ---
+        fetch('https://raw.githubusercontent.com/JaY-III/COMP1020/main/data-Planned.json')
             .then(res => res.json())
             .then(data => {
                 const tableBody = document.querySelector('#planned-table tbody');
@@ -79,12 +75,13 @@
             })
             .catch(err => console.error('Error fetching Planned Projects:', err));
 
-        // --- In-Progress Projects ---
+        // Helper for XML
         const getXMLText = (parent, tag) => {
             const el = parent.getElementsByTagName(tag)[0];
             return el ? el.textContent : '';
         };
 
+        // --- Fetch XML (In-Progress Projects) ---
         fetch('https://raw.githubusercontent.com/JaY-III/COMP1020/main/data-In-Progress.xml')
             .then(res => res.text())
             .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
@@ -107,10 +104,9 @@
             })
             .catch(err => console.error('Error fetching In-Progress Projects:', err));
     </script>
-
-
 </body>
 </html>
+
 
 
 
