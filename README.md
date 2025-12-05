@@ -8,8 +8,8 @@ Project Overview
 We aim to create a centralized database for projects announced by Prime Minister Carney under review by the new Major Projects Office.
 Our aim is to track the current status, budget, location of project to aid the Major Projects Office in project management.  This will allow search and filtering options to quickly access the data needed. Our DataBase has been populated by all Nation Building Projects as annonced by Prime Minister Carney   
 
-https://www.pm.gc.ca/en/news/news-releases/2025/09/11/prime-minister-carney-announces-first-projects-be-reviewed-new
-https://www.pm.gc.ca/en/news/news-releases/2025/11/13/prime-minister-carney-announces-second-tranche-nation-building-projects
+[Prime Minister of Canada 1st tranche](https://www.pm.gc.ca/en/news/news-releases/2025/09/11/prime-minister-carney-announces-first-projects-be-reviewed-new)
+[Prime Minister of Canada 2nd tranche](https://www.pm.gc.ca/en/news/news-releases/2025/11/13/prime-minister-carney-announces-second-tranche-nation-building-projects)
 
 Database Design    **************************************   needs to be verrified
 
