@@ -15,15 +15,22 @@
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About Us</a></li>
-            <li><a href="planned&progressprojects.html" style="color:#4ea8ff">Projects</a></li>
+            <li><a href="planned&progressprojects.html" style="color:#4ea8ff !important">Projects</a></li>
             <li><a href="contact.html">Contact Us</a></li>
         </ul>
     </header>
+
+<!-- HERO -->
+    <section class="hero-title">
+        <h1>Planned & In-Progress Projects Tables</h1>
+        <p>Provided here is clean formatting of project data exported from our database.</p>
+    </section>
+    
+<section class="table-section" style="padding:0 40px;">
 <h2>Planned Projects (JSON)</h2>
      <table>
         <thead>
             <tr>
-                <th>Project ID</th>
                 <th>Project Name</th>
                 <th>Project Status</th>
                 <th>Budget</th>
@@ -40,7 +47,6 @@
     <table id="inprogress-table">
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Name</th>
                 <th>Status</th>
                 <th>Budget</th>
@@ -50,7 +56,7 @@
         </thead>
         <tbody></tbody>
     </table>
-
+</section>
     <!-- Inline JavaScript -->
     <script>
 // Fetch data from a mock API
@@ -64,7 +70,6 @@
             data.projects.forEach(project => {
                 const row = document.createElement('tr');
                 row.innerHTML = `
-                    <td>${project.project_id}</td>
                     <td>${project.project_name}</td>
                     <td>${project.project_status}</td>
                     <td>${project.budget}</td>
@@ -93,7 +98,6 @@
                 Array.from(projects).forEach(project => {
                     const row = document.createElement('tr');
                     row.innerHTML = `
-                        <td>${getXMLText(project, 'project_id')}</td>
                         <td>${getXMLText(project, 'project_name')}</td>
                         <td>${getXMLText(project, 'project_status')}</td>
                         <td>${getXMLText(project, 'budget')}</td>
@@ -107,5 +111,6 @@
     </script>
 </body>
 </html>
+
 
 
