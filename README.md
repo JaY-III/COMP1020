@@ -1,52 +1,65 @@
-README TEMPLATE
-
-Project Title: National Infrastructure Project Database Consulting Team: [Your Group Members' Names]
-
 National Infrastructure Project Database Consulting Team:
 Duru Elli, Aishat Mohammed, Jordan Stella
 
-1.0 Project Overview (A brief, 1-2 paragraph summary of the project. Reiterate the problem you are solving for the ICC and briefly describe your solution.)
+Project Overview 
 
-The overall scope of the project is to provide SQL Database back end to track the projects announced by Prime Minister Carney under review by the new Major Projects Office.
+We aim to create a centralized database for projects announced by Prime Minister Carney under review by the new Major Projects Office.
+Our aim is to track the current status, budget, location of project to aid the Major Projects Office in project management.  This will allow search and filtering options to quickly access the data needed. Our DataBase has been populated by all Nation Building Projects as annonced by Prime Minister Carney   
 
-We have accomplished this task by creating a Database containing four tracking tables…..
+https://www.pm.gc.ca/en/news/news-releases/2025/09/11/prime-minister-carney-announces-first-projects-be-reviewed-new
+https://www.pm.gc.ca/en/news/news-releases/2025/11/13/prime-minister-carney-announces-second-tranche-nation-building-projects
 
-What is this?
+Database Design    **************************************   needs to be verrified
 
-
-
-2.0 Database Design (A short paragraph explaining your database schema. Mention the key tables you designed (Projects, Contractors, etc.) and briefly explain why you chose the relationships between them (e.g., "We used a junction table, ProjectAssignments, to resolve the many-to-many relationship between Projects and Contractors."))
-
-3.0 Setup and Execution Instructions (A clear, numbered, step-by-step guide to run your project.)
-
-1. Prerequisites: List any software needed (e.g., "MySQL Workbench must be installed.").
-mySQL workbench must be installed
-Web browser
+Our tables include; Projects, Provinces, Contractors, Tenders. This allows tracking of any project with the ability to highlight any relevant information such as budgets, province, contractors ect. Our Tender table is used to primarily tie the database together.   This is best demoonstrated using the ERD. 
 
 
-2. Database Creation: Explain how to create the database (e.g., "Open the provided [your_project_name].sql file in MySQL Workbench.").
-
-To create the data base you must run the __________________.sql
-***** we need to combine everything into one SQL
-
-3. Run the Script: Explain how to execute the script (e.g., "Execute the entire script by clicking the 'lightning bolt' icon to create all tables and insert all sample data.").
-**** YOU JUST DID
-4. Verification: Provide a simple query the user can run to confirm everything worked (e.g., "To verify a successful setup, you can run SELECT * FROM Projects; and you should see 10 sample projects.").
-
-??????????????
-
-Is this not part of the presentation???????????
+:::::::::::::::::::ERD HERE::::::::::
 
 
+Setup and Execution
+
+Required Software: 
+                    MYSQL Workbench 
+                    Any Modern Webbrowser
 
 
-4.0 Project Scope (Clearly define the boundaries of your proof-of-concept.)
+Database Creation:
 
-What the fuck does this mean
-It’s a repeate of the first questions
+    Open __________________.MSQ  in MYSQL Workbench
+    To create the database/populate the tables, 
+    Click the lightning bolt or Ctrl + Shift + Enter to run the script.
 
-· In Scope: Briefly list what your project accomplishes (e.g., "Tracks projects, contractors, and their assignments," "Provides 5 key queries for reporting.").
+Verrify Database:
+        Open ___________________.MSQ  or any of the provided 5 Sample queries. 
+        Click the lightning bolt or Ctrl + Shift + Enter to run the script.
+        
+      
+Project Scope
 
-· Out of Scope: List features that are not included (e.g., "Does not include a user login system," "Does not track project budgets at a granular level.").
+Our project aims to:
 
-· Assumptions: List any assumptions you made (e.g., "Assumes a contractor can work in multiple provinces.").
+    Track projects and Tenders.
+    Contactors bids placed, and awardaed contracts
+    Project budgets
+    Scalability to per unique needs
+    Provide ease of access
+    Custon Queries creation for the information you require. 
+    
+Our project can not provide:   ----------------------- Needs rework
+
+    Live tracking,.......
+    Does not
+    ...
+    ---------------
+
+Assumptions we made for demonstration purposes:
+
+    Provinces Award Tenders
+    Many Contractors Submit Tenders
+    Projects requirements create invites Tenders
+    Contractors are Awarded Tenders
+
+
+    
+
