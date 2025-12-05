@@ -1,3 +1,5 @@
+[DrewCrew](https://jay-iii.github.io/COMP1020)
+
 National Infrastructure Project Database Consulting Team:
 Duru Elli, Aishat Mohammed, Jordan Stella
 
@@ -14,8 +16,7 @@ Database Design    **************************************   needs to be verrifie
 Our tables include; Projects, Provinces, Contractors, Tenders. This allows tracking of any project with the ability to highlight any relevant information such as budgets, province, contractors ect. Our Tender table is used to primarily tie the database together.   This is best demoonstrated using the ERD. 
 
 
-:::::::::::::::::::ERD HERE::::::::::
-
+![ERD](https://jay-iii.github.io/COMP1020/ER_Diagram_Transparent.png)
 
 Setup and Execution
 
