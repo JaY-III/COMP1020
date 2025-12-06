@@ -30,14 +30,22 @@ Our tables include; Projects, Provinces, Contractors, Tenders. This allows track
 
 ### Database Creation:
 
-    Open __________________.MSQ  in MYSQL Workbench
-    To create the database/populate the tables, 
-    Click the lightning bolt or Ctrl + Shift + Enter to run the script.
-
+    Open MySQL Workbench and click on the Database Instance under MySQL Connections
+    Drag and Drop or "Ctrl + Shift + O" / File Open SQL Script -> Navigate to the loction of " Setup_National_Database.sql "
+    Click the lightning bolt ("Ctrl + Shift  + Enter") to execute the entire script.
+    The bottom of the Screen will show Output, green checkmnarks are expected
+  
 ### Verrify Database:
 
-        Open ___________________.MSQ  or any of the provided 5 Sample queries. 
-        Click the lightning bolt or Ctrl + Shift + Enter to run the script.
+    From withen the mySql Wortkbench application and after you have run the Setup_National_Database.sql
+    Drag and Drop or "Ctrl + Shift + O" / File Open SQL Script -> Navigate to the loction of " Queries_National_Database.sql "
+    A new Tab will aprear with the imported SQL script.
+    Highlight a code block you would like to test -> Click the Middler lightning bolt or Ctrl + Shift + Enter to run the script.
+    You will see something like the image bellow if done correctly.
+    
+![Verrify_ Database.png](https://jay-iii.github.io/COMP1020/Verrify_ Database.png)
+     
+ 
         
       
 ## Project Scope
