@@ -48,15 +48,17 @@ header ul a:hover {
     color: #4ea8ff;
 }
 
-/* Hero title */
-.hero-title {
+/* Page title banner */
+.page-banner {
+    background-color: #0b1b3f;
+    color: white;
     text-align: center;
-    padding: 40px 10px;
+    padding: 35px 10px;
+    margin-bottom: 40px;
 }
 
-.hero-title h1 {
+.page-banner h1 {
     font-size: 2rem;
-    margin-bottom: 10px;
 }
 
 /* Table section */
