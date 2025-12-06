@@ -33,10 +33,8 @@
     <!-- ================= TABLES ================= -->
     <section class="table-section two-column-tables" style="padding: 0 40px;">
 
-        <!-- Planned Projects -->
         <div class="table-wrapper">
             <h2>Planned Projects (JSON)</h2>
-
             <table>
                 <thead>
                     <tr>
@@ -51,10 +49,8 @@
             </table>
         </div>
 
-        <!-- In-Progress Projects -->
         <div class="table-wrapper">
             <h2>In-Progress Projects (XML)</h2>
-
             <table id="inprogress-table">
                 <thead>
                     <tr>
@@ -73,7 +69,7 @@
 
 
     <!-- ================= SQL SECTION ================= -->
-    <section class="sql-section" style="padding:40px;">
+    <section class="sql-section" style="padding:40px; max-width:900px; margin:0 auto;">
         <h2 style="text-align:center;">SQL Queries Used</h2>
 
         <h3>1. Projects Located in Ontario</h3>
@@ -116,7 +112,7 @@ GROUP BY Contractors.contractor_id, Contractors.company_name;
 <pre><code>
 UPDATE Projects
 SET project_status = 'Completed'
-WHERE project_id = 123;  -- Replace with actual ID
+WHERE project_id = 123;
 </code></pre>
 
         <h3>5. Total Budget of All Projects Grouped by Province</h3>
@@ -131,15 +127,13 @@ GROUP BY Provinces.province_name;
     </section>
 
 
-
     <!-- ================= JAVASCRIPT ================= -->
     <script>
 
-        /*  Load contractor names for lookup */
+        /* Load contractor names */
         let contractorLookup = {};
 
-        /* MAIN FILE: const loadContractors = fetch('https://jay-iii.github.io/data-contractors.json') */
-        const loadContractors = fetch('https://github.com/JaY-III/COMP1020/blob/drewe4444-patch-1/data-contractors.json')
+        const loadContractors = fetch('https://raw.githubusercontent.com/JaY-III/COMP1020/drewe4444-patch-1/data-contractors.json')
             .then(res => res.json())
             .then(data => {
                 data.contractors.forEach(c => {
@@ -148,8 +142,7 @@ GROUP BY Provinces.province_name;
             });
 
 
-
-        /*  Load Planned JSON Projects */
+        /* Load planned projects */
         loadContractors.then(() => {
             fetch('https://jay-iii.github.io/COMP1020/data-Planned.json')
                 .then(response => response.json())
@@ -168,20 +161,17 @@ GROUP BY Provinces.province_name;
                         tableBody.appendChild(row);
                     });
                 })
-                .catch(error => console.error('Error fetching Planned Projects:', error));
         });
 
 
-
-        /*  Helper for XML extraction */
+        /* Helper for XML parsing */
         const getXMLText = (parent, tag) => {
             const el = parent.getElementsByTagName(tag)[0];
             return el ? el.textContent : '';
         };
 
 
-
-        /*  Load In-Progress XML Projects */
+        /* Load in-progress projects */
         loadContractors.then(() => {
             fetch('https://jay-iii.github.io/COMP1020/data-In-Progress.xml')
                 .then(res => res.text())
@@ -192,20 +182,19 @@ GROUP BY Provinces.province_name;
 
                     Array.from(projects).forEach(project => {
                         const bidderId = getXMLText(project, 'winning_bidder');
-                        const bidderName = contractorLookup[bidderId] || bidderId;
-
                         const row = document.createElement('tr');
+
                         row.innerHTML = `
                             <td>${getXMLText(project, 'project_name')}</td>
                             <td>${getXMLText(project, 'project_status')}</td>
                             <td>${getXMLText(project, 'budget')}</td>
-                            <td>${bidderName}</td>
+                            <td>${contractorLookup[bidderId] || bidderId}</td>
                             <td>${getXMLText(project, 'project_hq')}</td>
                         `;
+
                         tableBody.appendChild(row);
                     });
                 })
-                .catch(err => console.error('Error fetching In-Progress Projects:', err));
         });
 
     </script>
