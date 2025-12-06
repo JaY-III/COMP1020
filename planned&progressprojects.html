@@ -73,11 +73,11 @@
 
 
     <!-- ================= SQL SECTION ================= -->
-   <section class="sql-section" style="padding:40px;">
-    <h2 style="text-align:center;">SQL Queries Used</h2>
+    <section class="sql-section" style="padding:40px;">
+        <h2 style="text-align:center;">SQL Queries Used</h2>
 
-    <h3>1. Projects Located in Ontario</h3>
-    <pre><code>
+        <h3>1. Projects Located in Ontario</h3>
+<pre><code>
 SELECT Projects.project_id,
        Projects.project_name,
        Projects.project_status,
@@ -90,54 +90,56 @@ JOIN Tenders     ON Projects.project_id = Tenders.project_id
 JOIN Provinces   ON Tenders.province_id = Provinces.province_id
 JOIN Contractors ON Tenders.contractor_id = Contractors.contractor_id
 WHERE Provinces.province_name = 'Ontario';
-    </code></pre>
+</code></pre>
 
-    <h3>2. All In-Progress Projects</h3>
-    <pre><code>
+        <h3>2. All In-Progress Projects</h3>
+<pre><code>
 SELECT Projects.*,
        Contractors.company_name AS winning_bidder_name
 FROM Projects
 LEFT JOIN Tenders     ON Projects.project_id = Tenders.project_id
 LEFT JOIN Contractors ON Tenders.contractor_id = Contractors.contractor_id
 WHERE Projects.project_status = 'In-Progress';
-    </code></pre>
+</code></pre>
 
-    <h3>3. Count of Projects Assigned to Each Contractor</h3>
-    <pre><code>
+        <h3>3. Count of Projects Assigned to Each Contractor</h3>
+<pre><code>
 SELECT Contractors.company_name,
        COUNT(Projects.project_id) AS number_of_projects
 FROM Contractors
 LEFT JOIN Projects
        ON Contractors.contractor_id = Projects.winning_bidder
 GROUP BY Contractors.contractor_id, Contractors.company_name;
-    </code></pre>
+</code></pre>
 
-    <h3>4. Update the Status of a Project to Completed</h3>
-    <pre><code>
+        <h3>4. Update the Status of a Project to Completed</h3>
+<pre><code>
 UPDATE Projects
 SET project_status = 'Completed'
-WHERE project_id = 123;   -- Replace 123 with the actual project ID
-    </code></pre>
+WHERE project_id = 123;  -- Replace with actual ID
+</code></pre>
 
-    <h3>5. Total Budget of All Projects Grouped by Province</h3>
-    <pre><code>
+        <h3>5. Total Budget of All Projects Grouped by Province</h3>
+<pre><code>
 SELECT Provinces.province_name,
        SUM(Projects.budget) AS total_budget
 FROM Projects
 INNER JOIN Tenders   ON Projects.project_id = Tenders.project_id
 INNER JOIN Provinces ON Tenders.province_id = Provinces.province_id
 GROUP BY Provinces.province_name;
-    </code></pre>
-</section>
+</code></pre>
+    </section>
+
 
 
     <!-- ================= JAVASCRIPT ================= -->
     <script>
 
-        /*  1. Load contractor names for lookup */
+        /*  Load contractor names for lookup */
         let contractorLookup = {};
 
-        fetch('https://jay-iii.github.io/data-contractors.json')
+        /* MAIN FILE: const loadContractors = fetch('https://jay-iii.github.io/data-contractors.json') */
+        const loadContractors = fetch('https://github.com/JaY-III/COMP1020/blob/drewe4444-patch-1/data-contractors.json')
             .then(res => res.json())
             .then(data => {
                 data.contractors.forEach(c => {
@@ -146,61 +148,67 @@ GROUP BY Provinces.province_name;
             });
 
 
-        /* 2. Load Planned JSON Projects */
-        fetch('https://jay-iii.github.io/COMP1020/data-Planned.json')
-            .then(response => response.json())
-            .then(data => {
-                const tableBody = document.getElementById('planned-table');
 
-                data.projects.forEach(project => {
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td>${project.project_name}</td>
-                        <td>${project.project_status}</td>
-                        <td>${project.budget}</td>
-                        <td>${contractorLookup[project.winning_bidder] || project.winning_bidder}</td>
-                        <td>${project.project_hq}</td>
-                    `;
-                    tableBody.appendChild(row);
-                });
-            })
-            .catch(error => console.error('Error fetching Planned Projects:', error));
+        /*  Load Planned JSON Projects */
+        loadContractors.then(() => {
+            fetch('https://jay-iii.github.io/COMP1020/data-Planned.json')
+                .then(response => response.json())
+                .then(data => {
+                    const tableBody = document.getElementById('planned-table');
+
+                    data.projects.forEach(project => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${project.project_name}</td>
+                            <td>${project.project_status}</td>
+                            <td>${project.budget}</td>
+                            <td>${contractorLookup[project.winning_bidder] || project.winning_bidder}</td>
+                            <td>${project.project_hq}</td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+                })
+                .catch(error => console.error('Error fetching Planned Projects:', error));
+        });
 
 
-        /*  3. Helper for XML Extraction */
+
+        /*  Helper for XML extraction */
         const getXMLText = (parent, tag) => {
             const el = parent.getElementsByTagName(tag)[0];
             return el ? el.textContent : '';
         };
 
 
-        /*  4. Load In-Progress XML Projects */
-        fetch('https://jay-iii.github.io/COMP1020/data-In-Progress.xml')
-            .then(res => res.text())
-            .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
-            .then(xml => {
-                const tableBody = document.querySelector('#inprogress-table tbody');
-                const projects = xml.getElementsByTagName('Project');
 
-                Array.from(projects).forEach(project => {
-                    const bidderId = getXMLText(project, 'winning_bidder');
-                    const bidderName = contractorLookup[bidderId] || bidderId;
+        /*  Load In-Progress XML Projects */
+        loadContractors.then(() => {
+            fetch('https://jay-iii.github.io/COMP1020/data-In-Progress.xml')
+                .then(res => res.text())
+                .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+                .then(xml => {
+                    const tableBody = document.querySelector('#inprogress-table tbody');
+                    const projects = xml.getElementsByTagName('Project');
 
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td>${getXMLText(project, 'project_name')}</td>
-                        <td>${getXMLText(project, 'project_status')}</td>
-                        <td>${getXMLText(project, 'budget')}</td>
-                        <td>${bidderName}</td>
-                        <td>${getXMLText(project, 'project_hq')}</td>
-                    `;
-                    tableBody.appendChild(row);
-                });
-            })
-            .catch(err => console.error('Error fetching In-Progress Projects:', err));
+                    Array.from(projects).forEach(project => {
+                        const bidderId = getXMLText(project, 'winning_bidder');
+                        const bidderName = contractorLookup[bidderId] || bidderId;
+
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${getXMLText(project, 'project_name')}</td>
+                            <td>${getXMLText(project, 'project_status')}</td>
+                            <td>${getXMLText(project, 'budget')}</td>
+                            <td>${bidderName}</td>
+                            <td>${getXMLText(project, 'project_hq')}</td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+                })
+                .catch(err => console.error('Error fetching In-Progress Projects:', err));
+        });
 
     </script>
 
 </body>
 </html>
-
