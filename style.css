@@ -782,3 +782,18 @@ tr:nth-child(even) {
     }
 }
 
+
+/* KEEPS TABLES READABLE */
+.two-column-tables {
+    display: flex;
+    gap: 40px;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.table-wrapper {
+    flex: 1;
+    min-width: 420px; 
+}
+
