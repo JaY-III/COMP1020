@@ -206,30 +206,31 @@ GROUP BY Provinces.province_name;
             });
 
         /* Load the planned JSON projects */
-        function loadPlannedProjects() {
+   function loadPlannedProjects() {
 
-            fetch("data-Planned.json")
-                .then(r => r.json())
-                .then(data => {
+    fetch("data-Planned.json")
+        .then(r => r.json())
+        .then(data => {
 
-                    var list = data.projects;
-                    var table = document.getElementById("planned-table");
+            var list = data; // <--- FIXED
+            var table = document.getElementById("planned-table");
 
-                    for (var i = 0; i < list.length; i++) {
-                        var p = list[i];
-                        var winner = contractorLookup[p.winning_bidder];
+            for (var i = 0; i < list.length; i++) {
+                var p = list[i];
+                var winner = contractorLookup[p.winning_bidder];
 
-                        table.innerHTML +=
-                        "<tr>" +
-                        "<td>" + p.project_name + "</td>" +
-                        "<td>" + p.project_status + "</td>" +
-                        "<td>" + p.budget + "</td>" +
-                        "<td>" + winner + "</td>" +
-                        "<td>" + p.project_hq + "</td>" +
-                        "</tr>";
-                    }
-                });
-        }
+                table.innerHTML +=
+                "<tr>" +
+                "<td>" + p.project_name + "</td>" +
+                "<td>" + p.project_status + "</td>" +
+                "<td>" + p.budget + "</td>" +
+                "<td>" + winner + "</td>" +
+                "<td>" + p.project_hq + "</td>" +
+                "</tr>";
+            }
+        });
+}
+
 
         /* Load in-progress XML projects */
         function loadInProgressProjects() {
