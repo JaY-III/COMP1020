@@ -133,13 +133,15 @@ GROUP BY Provinces.province_name;
         /* Load contractor names */
         let contractorLookup = {};
 
-        const loadContractors = fetch('https://raw.githubusercontent.com/JaY-III/COMP1020/drewe4444-patch-1/data-contractors.json')
-            .then(res => res.json())
-            .then(data => {
-                data.contractors.forEach(c => {
-                    contractorLookup[c.id] = c.name;
-                });
+        const loadContractors = fetch(
+            'https://raw.githubusercontent.com/JaY-III/COMP1020/drewe4444-patch-1/data-contractors.json'
+        )
+        .then(res => res.json())
+        .then(data => {
+            data.contractors.forEach(c => {
+                contractorLookup[c.id] = c.name;
             });
+        });
 
 
         /* Load planned projects */
@@ -160,7 +162,7 @@ GROUP BY Provinces.province_name;
                         `;
                         tableBody.appendChild(row);
                     });
-                })
+                });
         });
 
 
@@ -182,8 +184,8 @@ GROUP BY Provinces.province_name;
 
                     Array.from(projects).forEach(project => {
                         const bidderId = getXMLText(project, 'winning_bidder');
-                        const row = document.createElement('tr');
 
+                        const row = document.createElement('tr');
                         row.innerHTML = `
                             <td>${getXMLText(project, 'project_name')}</td>
                             <td>${getXMLText(project, 'project_status')}</td>
@@ -194,7 +196,7 @@ GROUP BY Provinces.province_name;
 
                         tableBody.appendChild(row);
                     });
-                })
+                });
         });
 
     </script>
