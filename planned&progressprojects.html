@@ -11,255 +11,239 @@
 
     <!-- HEADER -->
     <header>
-        <div class="logo">
-            <span class="icon">⚡</span>
-            DREWCREW
-        </div>
+        <div class="logo">DREWCREW</div>
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About Us</a></li>
-            <li><a href="planned&progressprojects.html" style="color:#4ea8ff !important">Projects</a></li>
+            <li><a href="planned&progressprojects.html" style="color:#4ea8ff">Projects</a></li>
             <li><a href="contact.html">Contact Us</a></li>
         </ul>
     </header>
 
-    <!-- HERO -->
+    <!-- PAGE TITLE -->
     <section class="hero-title">
         <h1>Planned & In-Progress Projects</h1>
-        <p>A combined overview of current project data from JSON and XML sources.</p>
+        <p>Data loaded from JSON, XML, and contractor lookup.</p>
     </section>
 
 
-    <!-- ================= TABLES ================= -->
-    <section class="table-section two-column-tables" style="padding: 0 40px;">
+    <!-- TABLES SECTION -->
+    <section class="table-section">
 
-        <div class="table-wrapper">
-            <h2>Planned Projects (JSON)</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Project Name</th>
-                        <th>Status</th>
-                        <th>Budget</th>
-                        <th>Winning Bidder</th>
-                        <th>Project HQ</th>
-                    </tr>
-                </thead>
-                <tbody id="planned-table"></tbody>
-            </table>
+        <div class="two-column-tables">
+
+            <!-- Planned Projects -->
+            <div class="table-wrapper">
+                <h2>Planned Projects (JSON)</h2>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Project Name</th>
+                            <th>Status</th>
+                            <th>Budget</th>
+                            <th>Winning Bidder</th>
+                            <th>Project HQ</th>
+                        </tr>
+                    </thead>
+                    <tbody id="planned-table"></tbody>
+                </table>
+            </div>
+
+            <!-- In-Progress Projects -->
+            <div class="table-wrapper">
+                <h2>In-Progress Projects (XML)</h2>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Status</th>
+                            <th>Budget</th>
+                            <th>Winning Bidder</th>
+                            <th>Project HQ</th>
+                        </tr>
+                    </thead>
+                    <tbody id="inprogress-table"></tbody>
+                </table>
+            </div>
+
         </div>
-
-        <div class="table-wrapper">
-            <h2>In-Progress Projects (XML)</h2>
-            <table id="inprogress-table">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Status</th>
-                        <th>Budget</th>
-                        <th>Winning Bidder</th>
-                        <th>Project HQ</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-        </div>
-
     </section>
 
 
-    <!-- ================= SQL SECTION ================= -->
-    <section class="sql-section" style="padding:0; max-width:900px; margin:0 auto; text-align: center;">
+    <!-- SQL QUERIES & SCREENSHOTS -->
+    <section class="sql-section">
+        <h2>SQL Queries Used</h2>
 
-		<table>
-            <thead>
-                <tr>
-                    <td>
-                        <h2 style="text-align:center;">SQL Queries Used</h2>
-                    </td>
-                    <td>
-                        <h2 style="text-align:center;">SQL Output</h2>
-                    </td>
-                </tr>
-            </thead>
-            <tr>
-                <td>
-        
-        <h3>1. Projects Located in Ontario</h3>
-<pre style="color: black;"><code>
-SELECT Projects.project_id AS 'Project ID',
-       Projects.project_name AS 'Project Name',
-       Projects.project_status AS 'Project Status',
-       Projects.budget AS 'Project Budget',
-       Projects.winning_bidder AS 'Winning Bidder',
-       Contractors.company_name AS 'Bidder_name',
-       Projects.project_hq AS 'Project AS'
+        <!-- Query 1 -->
+        <div class="sql-row">
+            <div class="sql-block">
+                <h3>1. Projects Located in Ontario</h3>
+<pre>
+SELECT Projects.project_id,
+       Projects.project_name,
+       Projects.project_status,
+       Projects.budget,
+       Projects.winning_bidder,
+       Contractors.company_name AS winning_bidder_name,
+       Projects.project_hq
 FROM Projects
-JOIN Tenders     ON Projects.project_id = Tenders.project_id 
+JOIN Tenders     ON Projects.project_id = Tenders.project_id
 JOIN Provinces   ON Tenders.province_id = Provinces.province_id
 JOIN Contractors ON Tenders.contractor_id = Contractors.contractor_id
 WHERE Provinces.province_name = 'Ontario';
-</code></pre>
-                </td>
-                <td>
-                    <img src="Projects_Located_in_Ontario.png">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    
-        <h3>2. All In-Progress Projects</h3>
-<pre style="color: black"><code>
-SELECT Projects.project_id AS 'Project ID',
-    Projects.project_status AS 'Project Status',
-    Projects.budget AS 'Budget',
-    Projects.winning_bidder AS 'Winning Bidder',
-	Contractors.company_name AS 'Winner',
-    Projects.project_hq AS 'Project HQ'
+</pre>
+            </div>
+
+            <div class="sql-image">
+                <img src="screenshots/query1.png" alt="Query 1 Result">
+            </div>
+        </div>
+
+        <!-- Query 2 -->
+        <div class="sql-row">
+            <div class="sql-block">
+                <h3>2. All In-Progress Projects</h3>
+<pre>
+SELECT Projects.*,
+       Contractors.company_name AS winning_bidder_name
 FROM Projects
 LEFT JOIN Tenders     ON Projects.project_id = Tenders.project_id
 LEFT JOIN Contractors ON Tenders.contractor_id = Contractors.contractor_id
 WHERE Projects.project_status = 'In-Progress';
-</code></pre>
-                </td>
-                <td>
-                    <img src="All_In_Progress_Projects.png">
-                </td>
-            <tr>
-                <td>
-        <h3>3. Count of Projects Assigned to Each Contractor</h3>
-<pre style="color: black"><code>
-SELECT Contractors.company_name AS 'Company Name',
-       COUNT(Projects.project_id) AS 'Total Projects'
+</pre>
+            </div>
+
+            <div class="sql-image">
+                <img src="screenshots/query2.png" alt="Query 2 Result">
+            </div>
+        </div>
+
+        <!-- Query 3 -->
+        <div class="sql-row">
+            <div class="sql-block">
+                <h3>3. Projects Per Contractor</h3>
+<pre>
+SELECT Contractors.company_name AS company_name,
+       COUNT(Projects.project_id) AS total_projects
 FROM Contractors
 LEFT JOIN Projects
        ON Contractors.contractor_id = Projects.winning_bidder
 GROUP BY Contractors.contractor_id, Contractors.company_name
-ORDER BY 2 DESC
+ORDER BY total_projects DESC
 LIMIT 15;
-</code></pre>
+</pre>
+            </div>
 
-                </td>
-                <td>
-                    <img src="Count_of_Projects_Assigned_to_Each_Contractor.png">
-                </td>
-            </tr>
-            <tr>
-                <td>
-        <h3>4. Update the Status of a Project to Completed</h3>
-<pre style="color: black"><code>
-SELECT *
-FROM Projects
-WHERE project_id = 12;
+            <div class="sql-image">
+                <img src="screenshots/query3.png" alt="Query 3 Result">
+            </div>
+        </div>
 
+        <!-- Query 4 -->
+        <div class="sql-row">
+            <div class="sql-block">
+                <h3>4. Update Project Status</h3>
+<pre>
 UPDATE Projects
 SET project_status = 'Completed'
-WHERE project_id = 12;
-</code></pre>
-                </td>
-                <td>
-                    <img src="updateA.png"><br><br><br>
-					<img src="updateB.png">
-                </td>
-            </tr>
-            <tr>
-                <td>
-        <h3>5. Total Budget of All Projects Grouped by Province</h3>
-<pre style="color: black"><code>
-SELECT Provinces.province_name AS Province,
-       FORMAT(SUM(Projects.budget), 2) AS 'Total Budget'
+WHERE project_id = 123;
+</pre>
+            </div>
+
+            <div class="sql-image">
+                <img src="screenshots/query4.png" alt="Query 4 Result">
+            </div>
+        </div>
+
+        <!-- Query 5 -->
+        <div class="sql-row">
+            <div class="sql-block">
+                <h3>5. Total Budget by Province</h3>
+<pre>
+SELECT Provinces.province_name,
+       SUM(Projects.budget) AS total_budget
 FROM Projects
-INNER JOIN Tenders ON Projects.project_id = Tenders.project_id
-INNER JOIN Provinces ON Tenders.province_id = Provinces.province_id
+JOIN Tenders   ON Projects.project_id = Tenders.project_id
+JOIN Provinces ON Tenders.province_id = Provinces.province_id
 GROUP BY Provinces.province_name;
-</code></pre>
-                </td>
-                <td>
-                    <img src="Total_Budget.png">
-                </td>
-            </tr>
-        </table>
-		
+</pre>
+            </div>
+
+            <div class="sql-image">
+                <img src="screenshots/query5.png" alt="Query 5 Result">
+            </div>
+        </div>
+
     </section>
 
 
-    <!-- ================= JAVASCRIPT ================= -->
-<script>
+    <!-- JAVASCRIPT FOR DATA LOADING -->
+    <script>
 
-    /* Load contractor names */
-    let contractorLookup = {};
+        /* Contractor lookup */
+        let contractorLookup = {};
 
-    const loadContractors = fetch(
-        'https://raw.githubusercontent.com/JaY-III/COMP1020/drewe4444-patch-1/data-contractors.json'
-    )
-    .then(res => res.json())
-    .then(data => {
-        data.forEach(c => {
-            contractorLookup[c.contractor_id] = c.company_name;
-        });
-    });
-
-
-    /* Load planned projects */
-    loadContractors.then(() => {
-        fetch('https://jay-iii.github.io/COMP1020/data-Planned.json')
-            .then(response => response.json())
+        fetch("https://raw.githubusercontent.com/JaY-III/COMP1020/refs/heads/main/data-contractors.json")
+            .then(res => res.json())
             .then(data => {
-                const tableBody = document.getElementById('planned-table');
-
-                data.projects.forEach(project => {
-                    const row = document.createElement('tr');
-
-                    row.innerHTML = `
-                        <td>${project.project_name}</td>
-                        <td>${project.project_status}</td>
-                        <td>${project.budget}</td>
-                        <td>${contractorLookup[project.winning_bidder] || project.winning_bidder}</td>
-                        <td>${project.project_hq}</td>
-                    `;
-
-                    tableBody.appendChild(row);
+                data.forEach(c => {
+                    contractorLookup[c.contractor_id] = c.company_name;
                 });
+                loadPlanned();
+                loadXML();
             });
-    });
 
 
-    /* Helper for XML parsing */
-    const getXMLText = (parent, tag) => {
-        const el = parent.getElementsByTagName(tag)[0];
-        return el ? el.textContent : '';
-    };
-
-
-    /* Load in-progress projects */
-    loadContractors.then(() => {
-        fetch('https://jay-iii.github.io/COMP1020/data-In-Progress.xml')
-            .then(res => res.text())
-            .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
-            .then(xml => {
-                const tableBody = document.querySelector('#inprogress-table tbody');
-                const projects = xml.getElementsByTagName('Project');
-
-                Array.from(projects).forEach(project => {
-                    const bidderId = getXMLText(project, 'winning_bidder');
-
-                    const row = document.createElement('tr');
-
-                    row.innerHTML = `
-                        <td>${getXMLText(project, 'project_name')}</td>
-                        <td>${getXMLText(project, 'project_status')}</td>
-                        <td>${getXMLText(project, 'budget')}</td>
-                        <td>${contractorLookup[bidderId] || bidderId}</td>
-                        <td>${getXMLText(project, 'project_hq')}</td>
-                    `;
-
-                    tableBody.appendChild(row);
+        /* Load planned (JSON) projects */
+        function loadPlanned() {
+            fetch("https://raw.githubusercontent.com/JaY-III/COMP1020/refs/heads/main/data-Planned.json")
+                .then(res => res.json())
+                .then(data => {
+                    const tbody = document.getElementById("planned-table");
+                    data.forEach(p => {
+                        let row = `
+                            <tr>
+                                <td>${p.project_name}</td>
+                                <td>${p.project_status}</td>
+                                <td>${p.budget}</td>
+                                <td>${contractorLookup[p.winning_bidder] || p.winning_bidder}</td>
+                                <td>${p.project_hq}</td>
+                            </tr>
+                        `;
+                        tbody.innerHTML += row;
+                    });
                 });
-            });
-    });
+        }
 
-</script>
 
+        /* Load in-progress (XML) projects */
+        function loadXML() {
+            fetch("https://raw.githubusercontent.com/JaY-III/COMP1020/refs/heads/main/data-In-Progress.xml")
+                .then(res => res.text())
+                .then(text => new DOMParser().parseFromString(text, "text/xml"))
+                .then(xml => {
+                    const tbody = document.getElementById("inprogress-table");
+                    const projects = xml.getElementsByTagName("Project");
+
+                    for (let p of projects) {
+                        let bidder = p.getElementsByTagName("winning_bidder")[0].textContent;
+                        let row = `
+                            <tr>
+                                <td>${p.getElementsByTagName("project_name")[0].textContent}</td>
+                                <td>${p.getElementsByTagName("project_status")[0].textContent}</td>
+                                <td>${p.getElementsByTagName("budget")[0].textContent}</td>
+                                <td>${contractorLookup[bidder] || bidder}</td>
+                                <td>${p.getElementsByTagName("project_hq")[0].textContent}</td>
+                            </tr>
+                        `;
+                        tbody.innerHTML += row;
+                    }
+                });
+        }
+
+    </script>
 
 </body>
 </html>
