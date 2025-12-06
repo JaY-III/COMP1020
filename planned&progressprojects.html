@@ -9,7 +9,7 @@
 
 <body>
 
-    <!-- HEADER -->
+    <!-- Navigation Header -->
     <header>
         <div class="logo">⚡ DREWCREW</div>
         <ul>
@@ -20,19 +20,18 @@
         </ul>
     </header>
 
-    <!-- BLUE TITLE BANNER -->
+    <!-- Page Title Banner -->
     <div class="page-banner">
         <h1>Planned & In-Progress Projects</h1>
         <p>Data loaded from JSON, XML, and contractor lookup.</p>
     </div>
-
 
     <!-- TABLE SECTION -->
     <section class="table-section">
 
         <div class="two-column-tables">
 
-            <!-- PLANNED PROJECTS TABLE -->
+            <!-- Planned JSON Table -->
             <div class="table-wrapper">
                 <h2>Planned Projects (JSON)</h2>
 
@@ -50,7 +49,7 @@
                 </table>
             </div>
 
-            <!-- IN-PROGRESS PROJECTS TABLE -->
+            <!-- In-Progress XML Table -->
             <div class="table-wrapper">
                 <h2>In-Progress Projects (XML)</h2>
 
@@ -71,12 +70,11 @@
         </div>
     </section>
 
-
-    <!-- SQL QUERIES SECTION -->
+    <!-- SQL QUERIES -->
     <section class="sql-section">
         <h2>SQL Queries Used</h2>
 
-        <!-- QUERY 1 -->
+        <!-- Query 1 -->
         <div class="sql-row">
             <div class="sql-block">
                 <h3>1. Projects Located in Ontario</h3>
@@ -97,12 +95,13 @@ WHERE Provinces.province_name = 'Ontario';
             </div>
 
             <div class="sql-image">
-                <img src="https://raw.githubusercontent.com/JaY-III/COMP1020/refs/heads/main/Projects_Located_in_Ontario.png">
+                <a href="Projects_Located_in_Ontario.png">
+                    <img src="Projects_Located_in_Ontario.png">
+                </a>
             </div>
         </div>
 
-
-        <!-- QUERY 2 -->
+        <!-- Query 2 -->
         <div class="sql-row">
             <div class="sql-block">
                 <h3>2. All In-Progress Projects</h3>
@@ -117,12 +116,13 @@ WHERE Projects.project_status = 'In-Progress';
             </div>
 
             <div class="sql-image">
-                <img src="https://raw.githubusercontent.com/JaY-III/COMP1020/refs/heads/main/All_In_Progress_Projects.png">
+                <a href="All_In_Progress_Projects.png">
+                    <img src="All_In_Progress_Projects.png">
+                </a>
             </div>
         </div>
 
-
-        <!-- QUERY 3 -->
+        <!-- Query 3 -->
         <div class="sql-row">
             <div class="sql-block">
                 <h3>3. Count of Projects Assigned to Each Contractor</h3>
@@ -139,12 +139,13 @@ LIMIT 15;
             </div>
 
             <div class="sql-image">
-                <img src="https://raw.githubusercontent.com/JaY-III/COMP1020/refs/heads/main/Count_of_Projects_Assigned_to_Each_Contractor.png">
+                <a href="Count_of_Projects_Assigned_to_Each_Contractor.png">
+                    <img src="Count_of_Projects_Assigned_to_Each_Contractor.png">
+                </a>
             </div>
         </div>
 
-
-        <!-- QUERY 4 -->
+        <!-- Query 4 -->
         <div class="sql-row">
             <div class="sql-block">
                 <h3>4. Update Project Status</h3>
@@ -156,13 +157,12 @@ WHERE project_id = 123;
             </div>
 
             <div class="sql-image">
-                <img src="https://raw.githubusercontent.com/JaY-III/COMP1020/refs/heads/main/updateA.png">
-                <img src="https://raw.githubusercontent.com/JaY-III/COMP1020/refs/heads/main/updateB.png" style="margin-top:10px">
+                <a href="updateA.png"><img src="updateA.png"></a>
+                <a href="updateB.png"><img src="updateB.png" style="margin-top:10px"></a>
             </div>
         </div>
 
-
-        <!-- QUERY 5 -->
+        <!-- Query 5 -->
         <div class="sql-row">
             <div class="sql-block">
                 <h3>5. Total Budget of All Projects by Province</h3>
@@ -177,31 +177,38 @@ GROUP BY Provinces.province_name;
             </div>
 
             <div class="sql-image">
-                <img src="https://raw.githubusercontent.com/JaY-III/COMP1020/refs/heads/main/Total_Budget.png">
+                <a href="Total_Budget.png">
+                    <img src="Total_Budget.png">
+                </a>
             </div>
         </div>
 
     </section>
 
-
-    <!-- BEGINNER JAVASCRIPT -->
+    <!-- SIMPLE BEGINNER JAVASCRIPT -->
     <script>
 
+        /* Contractor lookup table */
         var contractorLookup = {};
 
-        fetch("https://raw.githubusercontent.com/JaY-III/COMP1020/refs/heads/main/data-contractors.json")
-            .then(r => r.json())
-            .then(data => {
-                for (var i = 0; i < data.length; i++) {
-                    contractorLookup[data[i].contractor_id] = data[i].company_name;
+        /* Load contractor JSON */
+        fetch("data-contractors.json")
+            .then(response => response.json())
+            .then(contractors => {
+
+                for (var i = 0; i < contractors.length; i++) {
+                    contractorLookup[contractors[i].contractor_id] = contractors[i].company_name;
                 }
 
-                loadPlanned();
-                loadInProgress();
+                loadPlannedProjects();
+                loadInProgressProjects();
+
             });
 
-        function loadPlanned() {
-            fetch("https://raw.githubusercontent.com/JaY-III/COMP1020/refs/heads/main/data-Planned.json")
+        /* Load the planned JSON projects */
+        function loadPlannedProjects() {
+
+            fetch("data-Planned.json")
                 .then(r => r.json())
                 .then(data => {
 
@@ -210,31 +217,33 @@ GROUP BY Provinces.province_name;
 
                     for (var i = 0; i < list.length; i++) {
                         var p = list[i];
-                        var bidder = contractorLookup[p.winning_bidder];
+                        var winner = contractorLookup[p.winning_bidder];
 
                         table.innerHTML +=
                         "<tr>" +
-                            "<td>" + p.project_name + "</td>" +
-                            "<td>" + p.project_status + "</td>" +
-                            "<td>" + p.budget + "</td>" +
-                            "<td>" + bidder + "</td>" +
-                            "<td>" + p.project_hq + "</td>" +
+                        "<td>" + p.project_name + "</td>" +
+                        "<td>" + p.project_status + "</td>" +
+                        "<td>" + p.budget + "</td>" +
+                        "<td>" + winner + "</td>" +
+                        "<td>" + p.project_hq + "</td>" +
                         "</tr>";
                     }
                 });
         }
 
-        function loadInProgress() {
-            fetch("https://raw.githubusercontent.com/JaY-III/COMP1020/refs/heads/main/data-In-Progress.xml")
+        /* Load in-progress XML projects */
+        function loadInProgressProjects() {
+
+            fetch("data-In-Progress.xml")
                 .then(r => r.text())
-                .then(str => new DOMParser().parseFromString(str, "text/xml"))
+                .then(text => (new DOMParser()).parseFromString(text, "text/xml"))
                 .then(xml => {
 
+                    var rows = xml.getElementsByTagName("Project");
                     var table = document.getElementById("inprogress-table");
-                    var items = xml.getElementsByTagName("Project");
 
-                    for (var i = 0; i < items.length; i++) {
-                        var p = items[i];
+                    for (var i = 0; i < rows.length; i++) {
+                        var p = rows[i];
 
                         var name = p.getElementsByTagName("project_name")[0].textContent;
                         var status = p.getElementsByTagName("project_status")[0].textContent;
@@ -242,15 +251,15 @@ GROUP BY Provinces.province_name;
                         var bidderID = p.getElementsByTagName("winning_bidder")[0].textContent;
                         var hq = p.getElementsByTagName("project_hq")[0].textContent;
 
-                        var bidder = contractorLookup[bidderID];
+                        var bidderName = contractorLookup[bidderID];
 
                         table.innerHTML +=
                         "<tr>" +
-                            "<td>" + name + "</td>" +
-                            "<td>" + status + "</td>" +
-                            "<td>" + budget + "</td>" +
-                            "<td>" + bidder + "</td>" +
-                            "<td>" + hq + "</td>" +
+                        "<td>" + name + "</td>" +
+                        "<td>" + status + "</td>" +
+                        "<td>" + budget + "</td>" +
+                        "<td>" + bidderName + "</td>" +
+                        "<td>" + hq + "</td>" +
                         "</tr>";
                     }
                 });
