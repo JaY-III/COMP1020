@@ -128,80 +128,83 @@ GROUP BY Provinces.province_name;
 
 
     <!-- ================= JAVASCRIPT ================= -->
-    <script>
+<script>
 
-        /* Load contractor names */
-        let contractorLookup = {};
+    /* Load contractor names */
+    let contractorLookup = {};
 
-        const loadContractors = fetch(
-            'https://raw.githubusercontent.com/JaY-III/COMP1020/drewe4444-patch-1/data-contractors.json'
-        )
-        .then(res => res.json())
-        .then(data => {
-            data.contractors.forEach(c => {
-                contractorLookup[c.contractor_id] = c.company_name;
+    const loadContractors = fetch(
+        'https://raw.githubusercontent.com/JaY-III/COMP1020/drewe4444-patch-1/data-contractors.json'
+    )
+    .then(res => res.json())
+    .then(data => {
+        data.forEach(c => {
+            contractorLookup[c.contractor_id] = c.company_name;
+        });
+    });
+
+
+    /* Load planned projects */
+    loadContractors.then(() => {
+        fetch('https://jay-iii.github.io/COMP1020/data-Planned.json')
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.getElementById('planned-table');
+
+                data.projects.forEach(project => {
+                    const row = document.createElement('tr');
+
+                    row.innerHTML = `
+                        <td>${project.project_name}</td>
+                        <td>${project.project_status}</td>
+                        <td>${project.budget}</td>
+                        <td>${contractorLookup[project.winning_bidder] || project.winning_bidder}</td>
+                        <td>${project.project_hq}</td>
+                    `;
+
+                    tableBody.appendChild(row);
+                });
             });
-        });
+    });
 
 
-        /* Load planned projects */
-        loadContractors.then(() => {
-            fetch('https://jay-iii.github.io/COMP1020/data-Planned.json')
-                .then(response => response.json())
-                .then(data => {
-                    const tableBody = document.getElementById('planned-table');
+    /* Helper for XML parsing */
+    const getXMLText = (parent, tag) => {
+        const el = parent.getElementsByTagName(tag)[0];
+        return el ? el.textContent : '';
+    };
 
-                    data.projects.forEach(project => {
-                        const row = document.createElement('tr');
 
-                        row.innerHTML = `
-                            <td>${project.project_name}</td>
-                            <td>${project.project_status}</td>
-                            <td>${project.budget}</td>
-                            <td>${contractorLookup[project.winning_bidder] || project.winning_bidder}</td>
-                            <td>${project.project_hq}</td>
-                        `;
+    /* Load in-progress projects */
+    loadContractors.then(() => {
+        fetch('https://jay-iii.github.io/COMP1020/data-In-Progress.xml')
+            .then(res => res.text())
+            .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+            .then(xml => {
+                const tableBody = document.querySelector('#inprogress-table tbody');
+                const projects = xml.getElementsByTagName('Project');
 
-                        tableBody.appendChild(row);
-                    });
+                Array.from(projects).forEach(project => {
+                    const bidderId = getXMLText(project, 'winning_bidder');
+
+                    const row = document.createElement('tr');
+
+                    row.innerHTML = `
+                        <td>${getXMLText(project, 'project_name')}</td>
+                        <td>${getXMLText(project, 'project_status')}</td>
+                        <td>${getXMLText(project, 'budget')}</td>
+                        <td>${contractorLookup[bidderId] || bidderId}</td>
+                        <td>${getXMLText(project, 'project_hq')}</td>
+                    `;
+
+                    tableBody.appendChild(row);
                 });
-        });
+            });
+    });
 
+</script>
 
-        /* Helper for XML parsing */
-        const getXMLText = (parent, tag) => {
-            const el = parent.getElementsByTagName(tag)[0];
-            return el ? el.textContent : '';
-        };
-
-
-        /* Load in-progress projects */
-        loadContractors.then(() => {
-            fetch('https://jay-iii.github.io/COMP1020/data-In-Progress.xml')
-                .then(res => res.text())
-                .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
-                .then(xml => {
-                    const tableBody = document.querySelector('#inprogress-table tbody');
-                    const projects = xml.getElementsByTagName('Project');
-
-                    Array.from(projects).forEach(project => {
-                        const bidderId = getXMLText(project, 'winning_bidder');
-
-                        const row = document.createElement('tr');
-                        row.innerHTML = `
-                            <td>${getXMLText(project, 'project_name')}</td>
-                            <td>${getXMLText(project, 'project_status')}</td>
-                            <td>${getXMLText(project, 'budget')}</td>
-                            <td>${contractorLookup[bidderId] || bidderId}</td>
-                            <td>${getXMLText(project, 'project_hq')}</td>
-                        `;
-
-                        tableBody.appendChild(row);
-                    });
-                });
-        });
-
-    </script>
 
 </body>
 </html>
+
