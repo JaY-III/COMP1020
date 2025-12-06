@@ -72,46 +72,47 @@
     </section>
 
     <!-- SQL SECTION -->
-    <section class="sql-section" style="padding: 40px;">
-        <h2>SQL Queries Used for These Tables</h2>
+   <section class="sql-section" style="padding:40px;">
+    <h2>SQL Queries Used</h2>
 
-        <h3>Planned Projects</h3>
-        <pre><code>
-SELECT *
-FROM Projects
-WHERE project_status = 'Planned';
-        </code></pre>
-
-        <h3>In-Progress Projects</h3>
-        <pre><code>
-SELECT *
-FROM Projects
-WHERE project_status = 'In-Progress';
-        </code></pre>
-
-        <h3>Human-Readable Winning Bidder (INNER JOIN)</h3>
-        <pre><code>
-SELECT Projects.project_id,
-       Projects.project_name,
-       Projects.project_status,
-       Projects.budget,
-       Contractors.company_name AS winning_bidder,
-       Projects.project_hq
-FROM Projects
-JOIN Contractors
-    ON Projects.winning_bidder = Contractors.contractor_id;
-        </code></pre>
-
-        <h3>Projects Located in Ontario</h3>
-        <pre><code>
+    <h3>Projects Located in Ontario</h3>
+    <pre><code>
 SELECT Projects.*
 FROM Projects
-JOIN Tenders ON Projects.project_id = Tenders.project_id
+JOIN Tenders   ON Projects.project_id = Tenders.project_id
 JOIN Provinces ON Tenders.province_id = Provinces.province_id
 WHERE Provinces.province_name = 'Ontario'
 GROUP BY Projects.project_id;
-        </code></pre>
-    </section>
+    </code></pre>
+
+    <h3>All In-Progress Projects</h3>
+    <pre><code>
+SELECT *
+FROM Projects
+WHERE project_status = 'In-Progress';
+    </code></pre>
+
+    <h3>Count of Projects Assigned to Each Contractor</h3>
+    <pre><code>
+SELECT Contractors.company_name,
+       COUNT(Projects.project_id) AS number_of_projects
+FROM Contractors
+LEFT JOIN Projects
+       ON Contractors.contractor_id = Projects.winning_bidder
+GROUP BY Contractors.contractor_id, Contractors.company_name;
+    </code></pre>
+
+    <h3>Total Budget by Province</h3>
+    <pre><code>
+SELECT Provinces.province_name,
+       SUM(Projects.budget) AS total_budget
+FROM Projects
+INNER JOIN Tenders   ON Projects.project_id = Tenders.project_id
+INNER JOIN Provinces ON Tenders.province_id = Provinces.province_id
+GROUP BY Provinces.province_name;
+    </code></pre>
+</section>
+
 
 
     <!-- ================= JS DATA LOADERS ================= -->
@@ -169,3 +170,4 @@ GROUP BY Projects.project_id;
 
 </body>
 </html>
+
