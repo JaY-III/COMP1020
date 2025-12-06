@@ -59,13 +59,10 @@ Our tables include; Projects, Provinces, Contractors, Tenders. This allows track
     Provide ease of access
     Custon Queries creation for the information you require. 
     
-### Our project can not provide:   ----------------------- Needs rework
+### Our project currently can not provide:
 
-    Live tracking,.......
-    Does not
-    ...
-    ---------------
-
+    Live interaction with the Database
+        
 ### Assumptions we made for demonstration purposes:
 
     Provinces Award Tenders
