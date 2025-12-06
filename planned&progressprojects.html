@@ -3,15 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Planned & In-Progress Projects</title>
     <link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
+
+    <!-- HEADER -->
     <header>
         <div class="logo">
-    <span class="icon">⚡</span>
-    DREWCREW
-</div>
+            <span class="icon">⚡</span>
+            DREWCREW
+        </div>
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About Us</a></li>
@@ -20,74 +24,127 @@
         </ul>
     </header>
 
-<!-- HERO -->
+    <!-- HERO -->
     <section class="hero-title">
-        <h1>Planned & In-Progress Projects Tables</h1>
-        <p>Provided here is clean formatting of project data exported from our database.</p>
+        <h1>Planned & In-Progress Projects</h1>
+        <p>Below is a combined view of current projects pulled from JSON + XML data sources.</p>
     </section>
-    
-<section class="table-section" style="padding:0 40px;">
-<h2>Planned Projects (JSON)</h2>
-     <table>
-        <thead>
-            <tr>
-                <th>Project Name</th>
-                <th>Project Status</th>
-                <th>Budget</th>
-                <th>Winning Bidder</th>
-                <th>Project HQ</th>
-            </tr>
-        </thead>
-        <tbody id="planned-table">
-            <!-- work this time or else!!!!!FF!*IJHK!!!!!!!! -->
-        </tbody>
-    </table>
 
-    <h2>In-Progress Projects (XML)</h2>
-    <table id="inprogress-table">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Status</th>
-                <th>Budget</th>
-                <th>Winning Bidder</th>
-                <th>Project HQ</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
-</section>
-    <!-- Inline JavaScript -->
+    <!-- TABLES SECTION (Side-by-Side Layout) -->
+    <section class="table-section two-column-tables" style="padding: 0 40px;">
+
+        <!-- Planned Table -->
+        <div class="table-wrapper">
+            <h2>Planned Projects (JSON)</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Project Name</th>
+                        <th>Project Status</th>
+                        <th>Budget</th>
+                        <th>Winning Bidder</th>
+                        <th>Project HQ</th>
+                    </tr>
+                </thead>
+                <tbody id="planned-table"></tbody>
+            </table>
+        </div>
+
+        <!-- In-Progress Table -->
+        <div class="table-wrapper">
+            <h2>In-Progress Projects (XML)</h2>
+
+            <table id="inprogress-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Status</th>
+                        <th>Budget</th>
+                        <th>Winning Bidder</th>
+                        <th>Project HQ</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+    </section>
+
+    <!-- SQL SECTION -->
+    <section class="sql-section" style="padding: 40px;">
+        <h2>SQL Queries Used for These Tables</h2>
+
+        <h3>Planned Projects</h3>
+        <pre><code>
+SELECT *
+FROM Projects
+WHERE project_status = 'Planned';
+        </code></pre>
+
+        <h3>In-Progress Projects</h3>
+        <pre><code>
+SELECT *
+FROM Projects
+WHERE project_status = 'In-Progress';
+        </code></pre>
+
+        <h3>Human-Readable Winning Bidder (INNER JOIN)</h3>
+        <pre><code>
+SELECT Projects.project_id,
+       Projects.project_name,
+       Projects.project_status,
+       Projects.budget,
+       Contractors.company_name AS winning_bidder,
+       Projects.project_hq
+FROM Projects
+JOIN Contractors
+    ON Projects.winning_bidder = Contractors.contractor_id;
+        </code></pre>
+
+        <h3>Projects Located in Ontario</h3>
+        <pre><code>
+SELECT Projects.*
+FROM Projects
+JOIN Tenders ON Projects.project_id = Tenders.project_id
+JOIN Provinces ON Tenders.province_id = Provinces.province_id
+WHERE Provinces.province_name = 'Ontario'
+GROUP BY Projects.project_id;
+        </code></pre>
+    </section>
+
+
+    <!-- ================= JS DATA LOADERS ================= -->
+
     <script>
-// Fetch data from a mock API
+        /* ---------------- JSON (Planned Projects) ---------------- */
+        fetch('https://jay-iii.github.io/COMP1020/data-Planned.json')
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.getElementById('planned-table');
 
-    fetch('https://jay-iii.github.io/COMP1020/data-Planned.json')
-        .then(response => response.json())
-        .then(data => {
-            const tableBody = document.getElementById('planned-table');
+                data.projects.forEach(project => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${project.project_name}</td>
+                        <td>${project.project_status}</td>
+                        <td>${project.budget}</td>
+                        <td>${project.winning_bidder}</td>
+                        <td>${project.project_hq}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            })
+            .catch(error => console.error('Error fetching Planned Projects:', error));
 
-            // Access the projects array
-            data.projects.forEach(project => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${project.project_name}</td>
-                    <td>${project.project_status}</td>
-                    <td>${project.budget}</td>
-                    <td>${project.winning_bidder}</td>
-                    <td>${project.project_hq}</td>
-                `;
-                tableBody.appendChild(row);
-            });
-        })
-        .catch(error => console.error('Error fetching data:', error));
 
-        // Helper for XML
+        /* ---------------- Helper for XML ---------------- */
         const getXMLText = (parent, tag) => {
             const el = parent.getElementsByTagName(tag)[0];
             return el ? el.textContent : '';
         };
 
-        // --- Fetch XML (In-Progress Projects) ---
+        /* ---------------- XML (In-Progress Projects) ---------------- */
         fetch('https://jay-iii.github.io/COMP1020/data-In-Progress.xml')
             .then(res => res.text())
             .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
@@ -109,8 +166,6 @@
             })
             .catch(err => console.error('Error fetching In-Progress Projects:', err));
     </script>
+
 </body>
 </html>
-
-
-
