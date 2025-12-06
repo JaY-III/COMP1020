@@ -69,9 +69,9 @@
 
 
     <!-- ================= SQL SECTION ================= -->
-    <section class="sql-section" style="padding:0px; max-width:900px; margin:0 auto;">
-        <center>
-        <table>
+    <section class="sql-section" style="padding:0; max-width:900px; margin:0 auto; text-align: center;">
+
+		<table>
             <thead>
                 <tr>
                     <td>
@@ -166,20 +166,20 @@ WHERE project_id = 12;
                 <td>
         <h3>5. Total Budget of All Projects Grouped by Province</h3>
 <pre style="color: black"><code>
-SELECT Provinces.province_name,
-       SUM(Projects.budget) AS total_budget
+SELECT Provinces.province_name AS Province,
+       FORMAT(SUM(Projects.budget), 2) AS 'Total Budget'
 FROM Projects
-INNER JOIN Tenders   ON Projects.project_id = Tenders.project_id
+INNER JOIN Tenders ON Projects.project_id = Tenders.project_id
 INNER JOIN Provinces ON Tenders.province_id = Provinces.province_id
 GROUP BY Provinces.province_name;
 </code></pre>
                 </td>
                 <td>
-                    
+                    <img src="Total_Budget.png">
                 </td>
             </tr>
         </table>
-		</center>
+		
     </section>
 
 
@@ -263,7 +263,3 @@ GROUP BY Provinces.province_name;
 
 </body>
 </html>
-
-
-
-
