@@ -137,7 +137,7 @@ GROUP BY Provinces.province_name;
         /*  1. Load contractor names for lookup */
         let contractorLookup = {};
 
-        fetch('https://your-url-here/data-contractors.json')
+        fetch('https://jay-iii.github.io/data-contractors.json')
             .then(res => res.json())
             .then(data => {
                 data.contractors.forEach(c => {
@@ -203,3 +203,4 @@ GROUP BY Provinces.province_name;
 
 </body>
 </html>
+
