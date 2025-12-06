@@ -10,7 +10,7 @@ h1, h2, h3 {
     margin: 0 0 15px 0;
 }
 
-/* Header */
+/* Navigation header */
 header {
     background-color: #0b1b3f;
     color: white;
@@ -50,7 +50,7 @@ header ul a:hover {
 
 /* Page title banner */
 .page-banner {
-    background-color: #0b1b3f;
+    background-color: #132b5c;
     color: white;
     text-align: center;
     padding: 35px 10px;
@@ -61,7 +61,7 @@ header ul a:hover {
     font-size: 2rem;
 }
 
-/* Table section */
+/* Tables */
 .table-section {
     width: 90%;
     margin: auto;
@@ -101,7 +101,7 @@ tbody tr:nth-child(even) {
     background-color: #f3f6fc;
 }
 
-/* SQL queries section */
+/* SQL Section */
 .sql-section {
     padding: 40px 5%;
 }
@@ -137,12 +137,19 @@ tbody tr:nth-child(even) {
 
 .sql-image {
     width: 30%;
+    max-height: 300px;
+    overflow: hidden;
+    background-color: #dfe6f5;
+    border: 1px solid #b3bdd3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .sql-image img {
     width: 100%;
-    border: 1px solid #c2cce0;
-    display: block;
+    height: auto;
+    object-fit: contain;
 }
 
 /* Footer */
