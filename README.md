@@ -1,9 +1,10 @@
-#[**#DrewCrew#**](https://jay-iii.github.io/COMP1020)
+ <h1> <a href="https://jay-iii.github.io/COMP1020">  DrewCrew </a> </h1>
+
 
 National Infrastructure Project Database Consulting Team:
 Duru Elli, Aishat Mohammed, Jordan Stella
 
-Project Overview 
+<h2>Project Overview</h2>
 
 We aim to create a centralized database for projects announced by Prime Minister Carney under review by the new Major Projects Office.
 Our aim is to track the current status, budget, location of project to aid the Major Projects Office in project management.  This will allow search and filtering options to quickly access the data needed. Our DataBase has been populated by all Nation Building Projects as annonced by Prime Minister Carney   
@@ -18,29 +19,30 @@ Our tables include; Projects, Provinces, Contractors, Tenders. This allows track
 
 ![ERD](https://jay-iii.github.io/COMP1020/ER_Diagram_Transparent.png)
 
-#Setup and Execution#
+<h2>Setup and Execution </h2>
 
-###Required Software###
-  ```
+<h3>Required Software</h3>
+
+```
   MYSQL Workbench 
   Any Modern Webbrowser
 ```
 
-###Database Creation:###
+<h3>Database Creation:</h3>
 
     Open __________________.MSQ  in MYSQL Workbench
     To create the database/populate the tables, 
     Click the lightning bolt or Ctrl + Shift + Enter to run the script.
 
-###Verrify Database:###
+<h3>Verrify Database:</h3>
 
         Open ___________________.MSQ  or any of the provided 5 Sample queries. 
         Click the lightning bolt or Ctrl + Shift + Enter to run the script.
         
       
-##Project Scope##
+<h2>Project Scope</h2>
 
-###Our project aims to:###
+<h3>Our project aims to:</h3>
 
     Track projects and Tenders.
     Contactors bids placed, and awardaed contracts
@@ -49,14 +51,14 @@ Our tables include; Projects, Provinces, Contractors, Tenders. This allows track
     Provide ease of access
     Custon Queries creation for the information you require. 
     
-###Our project can not provide:   ----------------------- Needs rework###
+<h3>Our project can not provide:   ----------------------- Needs rework</h3>
 
     Live tracking,.......
     Does not
     ...
     ---------------
 
-###Assumptions we made for demonstration purposes:###
+<h3>Assumptions we made for demonstration purposes:</h3>
 
     Provinces Award Tenders
     Many Contractors Submit Tenders
