@@ -70,7 +70,7 @@
 
     <!-- ================= SQL SECTION ================= -->
     <section class="sql-section" style="padding:40px; max-width:900px; margin:0 auto;">
-        
+        <center>
         <table>
             <thead>
                 <tr>
@@ -130,12 +130,12 @@ WHERE Projects.project_status = 'In-Progress';
         <h3>3. Count of Projects Assigned to Each Contractor</h3>
 <pre style="color: black"><code>
 SELECT Contractors.company_name AS 'Company Name',
-       COUNT(Projects.project_id) AS Total_Projects
+       COUNT(Projects.project_id) AS 'Total Projects'
 FROM Contractors
 LEFT JOIN Projects
        ON Contractors.contractor_id = Projects.winning_bidder
 GROUP BY Contractors.contractor_id, Contractors.company_name
-ORDER BY Total_Projects DESC
+ORDER BY 2 DESC
 LIMIT 15;
 </code></pre>
 
@@ -148,13 +148,18 @@ LIMIT 15;
                 <td>
         <h3>4. Update the Status of a Project to Completed</h3>
 <pre style="color: black"><code>
+SELECT *
+FROM Projects
+WHERE project_id = 12;
+
 UPDATE Projects
 SET project_status = 'Completed'
-WHERE project_id = 123;
+WHERE project_id = 12;
 </code></pre>
                 </td>
                 <td>
-                    
+                    <img src="updateA.png"><br><br><br>
+					<img src="updateB.png">
                 </td>
             </tr>
             <tr>
@@ -174,6 +179,7 @@ GROUP BY Provinces.province_name;
                 </td>
             </tr>
         </table>
+		</center>
     </section>
 
 
@@ -257,5 +263,6 @@ GROUP BY Provinces.province_name;
 
 </body>
 </html>
+
 
 
