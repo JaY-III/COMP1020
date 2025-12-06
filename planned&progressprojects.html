@@ -139,7 +139,7 @@ GROUP BY Provinces.province_name;
         .then(res => res.json())
         .then(data => {
             data.contractors.forEach(c => {
-                contractorLookup[c.id] = c.name;
+                contractorLookup[c.contractor_id] = c.company_name;
             });
         });
 
@@ -153,6 +153,7 @@ GROUP BY Provinces.province_name;
 
                     data.projects.forEach(project => {
                         const row = document.createElement('tr');
+
                         row.innerHTML = `
                             <td>${project.project_name}</td>
                             <td>${project.project_status}</td>
@@ -160,6 +161,7 @@ GROUP BY Provinces.province_name;
                             <td>${contractorLookup[project.winning_bidder] || project.winning_bidder}</td>
                             <td>${project.project_hq}</td>
                         `;
+
                         tableBody.appendChild(row);
                     });
                 });
