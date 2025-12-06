@@ -12,32 +12,28 @@ a {
 }
 
 /* ===================== HEADER ===================== */
-header {
-    background: #0b1b3f;
-    padding: 20px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: white;
-}
-
-header ul {
-    list-style: none;
-    display: flex;
-    gap: 25px;
-    margin: 0;
-    padding: 0;
-}
-
-header ul li a {
-    color: white;
-    font-weight: 500;
-    transition: color 0.3s;
-}
-
-header ul li a:hover,
-header ul li a.active {
-    color: #4ea8ff;
+        header {
+            background: #0b1b3f;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+        header ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            margin: 0;
+            padding: 0;
+        }
+        header ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        header ul li a:hover {
+            color: #4ea8ff;
 }
 
 /* ===================== LOGO ===================== */
@@ -784,4 +780,35 @@ tr:nth-child(even) {
         width: 100%;
         overflow-x: auto;
     }
+}
+
+
+/* KEEPS TABLES READABLE */
+.two-column-tables {
+    display: flex;
+    gap: 40px;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.table-wrapper {
+    flex: 1;
+    min-width: 420px; 
+}
+
+/* WRAPPING FOR QUERIES */
+.sql-section {
+    max-width: 900px;     
+    margin: 0 auto;    
+}
+
+.sql-section pre {
+    background: #f0f4ff;
+    padding: 15px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 14px;
+    line-height: 1.4;
+    border: 1px solid #d0d6e5;
 }
