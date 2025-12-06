@@ -1,20 +1,102 @@
-contractor_id,company_name
-1,"ABC construction"
-2,"Elite construction"
-3,"Summit construction"
-4,"Apex Renovations"
-5,"Mastercraft construction"
-6,"Probuild Groups"
-7,"Maple Leaf Construction"
-8,"Canadian Heritage Builders"
-9,"Green Canada Builders"
-10,"Boreals Painting Co."
-11,"Tundra Tile & Stone"
-12,"Shield Contracting Limited"
-13,"St. Lawrence Structures"
-14,"Great Northern Construction"
-15,"Dominion Builders"
-16,"EcoNorth Renovations"
-17,"Drew Deck & Construction"
-18,"Jordan Construction"
-19,"Polar Doors & Windows"
+[
+	{
+		"contractor_id" : 1,
+		"company_name" : "ABC construction"
+	},
+	{
+		"contractor_id" : 2,
+		"company_name" : "Elite construction"
+	},
+	{
+		"contractor_id" : 3,
+		"company_name" : "Summit construction"
+	},
+	{
+		"contractor_id" : 4,
+		"company_name" : "Apex Renovations"
+	},
+	{
+		"contractor_id" : 5,
+		"company_name" : "Mastercraft construction"
+	},
+	{
+		"contractor_id" : 6,
+		"company_name" : "Probuild Groups"
+	},
+	{
+		"contractor_id" : 7,
+		"company_name" : "Maple Leaf Construction"
+	},
+	{
+		"contractor_id" : 8,
+		"company_name" : "Canadian Heritage Builders"
+	},
+	{
+		"contractor_id" : 9,
+		"company_name" : "Green Canada Builders"
+	},
+	{
+		"contractor_id" : 10,
+		"company_name" : "Boreals Painting Co."
+	},
+	{
+		"contractor_id" : 11,
+		"company_name" : "Tundra Tile & Stone"
+	},
+	{
+		"contractor_id" : 12,
+		"company_name" : "Shield Contracting Limited"
+	},
+	{
+		"contractor_id" : 13,
+		"company_name" : "St. Lawrence Structures"
+	},
+	{
+		"contractor_id" : 14,
+		"company_name" : "Great Northern Construction"
+	},
+	{
+		"contractor_id" : 15,
+		"company_name" : "Dominion Builders"
+	},
+	{
+		"contractor_id" : 16,
+		"company_name" : "EcoNorth Renovations"
+	},
+	{
+		"contractor_id" : 17,
+		"company_name" : "Drew Deck & Construction"
+	},
+	{
+		"contractor_id" : 18,
+		"company_name" : "Jordan Construction"
+	},
+	{
+		"contractor_id" : 19,
+		"company_name" : "Polar Doors & Windows"
+	},
+	{
+		"contractor_id" : 20,
+		"company_name" : "Bad construction"
+	},
+	{
+		"contractor_id" : 21,
+		"company_name" : "Failed construction"
+	},
+	{
+		"contractor_id" : 22,
+		"company_name" : "Sorry construction"
+	},
+	{
+		"contractor_id" : 23,
+		"company_name" : "Try again construction"
+	},
+	{
+		"contractor_id" : 24,
+		"company_name" : "Next Time construction"
+	},
+	{
+		"contractor_id" : 25,
+		"company_name" : "Nope construction"
+	}
+]
