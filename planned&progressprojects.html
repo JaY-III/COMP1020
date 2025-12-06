@@ -11,7 +11,7 @@
 
     <!-- HEADER -->
     <header>
-        <div class="logo">DREWCREW</div>
+        <div class="logo">⚡ DREWCREW</div>
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About Us</a></li>
@@ -20,14 +20,14 @@
         </ul>
     </header>
 
-    <!-- TITLE -->
+    <!-- PAGE TITLE -->
     <div class="hero-title">
         <h1>Planned & In-Progress Projects</h1>
         <p>Data loaded from JSON, XML, and contractor lookup.</p>
     </div>
 
 
-    <!-- TABLES SECTION -->
+    <!-- TABLE SECTION -->
     <section class="table-section">
 
         <div class="two-column-tables">
@@ -72,10 +72,9 @@
     </section>
 
 
-    <!-- SQL QUERIES + SCREENSHOTS -->
+    <!-- SQL QUERIES & SCREENSHOTS -->
     <section class="sql-section">
         <h2>SQL Queries Used</h2>
-
 
         <!-- QUERY 1 -->
         <div class="sql-row">
@@ -98,7 +97,7 @@ WHERE Provinces.province_name = 'Ontario';
             </div>
 
             <div class="sql-image">
-                <img src="https://raw.githubusercontent.com/JaY-III/COMP1020/refs/heads/main/Projects_Located_in_Ontario.png">
+                <img src="https://raw.githubusercontent.com/JaY-III/COMP1020/refs/heads/main/Projects_Located_in_Ontario.png" alt="">
             </div>
         </div>
 
@@ -118,7 +117,7 @@ WHERE Projects.project_status = 'In-Progress';
             </div>
 
             <div class="sql-image">
-                <img src="https://raw.githubusercontent.com/JaY-III/COMP1020/refs/heads/main/All_In_Progress_Projects.png">
+                <img src="https://raw.githubusercontent.com/JaY-III/COMP1020/refs/heads/main/All_In_Progress_Projects.png" alt="">
             </div>
         </div>
 
@@ -140,7 +139,7 @@ LIMIT 15;
             </div>
 
             <div class="sql-image">
-                <img src="https://raw.githubusercontent.com/JaY-III/COMP1020/refs/heads/main/Count_of_Projects_Assigned_to_Each_Contractor.png">
+                <img src="https://raw.githubusercontent.com/JaY-III/COMP1020/refs/heads/main/Count_of_Projects_Assigned_to_Each_Contractor.png" alt="">
             </div>
         </div>
 
@@ -148,7 +147,7 @@ LIMIT 15;
         <!-- QUERY 4 -->
         <div class="sql-row">
             <div class="sql-block">
-                <h3>4. Update Project Status to Completed</h3>
+                <h3>4. Update Project Status</h3>
 <pre>
 UPDATE Projects
 SET project_status = 'Completed'
@@ -157,8 +156,8 @@ WHERE project_id = 123;
             </div>
 
             <div class="sql-image">
-                <img src="https://raw.githubusercontent.com/JaY-III/COMP1020/refs/heads/main/updateA.png">
-                <img src="https://raw.githubusercontent.com/JaY-III/COMP1020/refs/heads/main/updateB.png" style="margin-top:10px;">
+                <img src="https://raw.githubusercontent.com/JaY-III/COMP1020/refs/heads/main/updateA.png" alt="">
+                <img src="https://raw.githubusercontent.com/JaY-III/COMP1020/refs/heads/main/updateB.png" alt="" style="margin-top:10px;">
             </div>
         </div>
 
@@ -178,57 +177,57 @@ GROUP BY Provinces.province_name;
             </div>
 
             <div class="sql-image">
-                <img src="https://raw.githubusercontent.com/JaY-III/COMP1020/refs/heads/main/Total_Budget.png">
+                <img src="https://raw.githubusercontent.com/JaY-III/COMP1020/refs/heads/main/Total_Budget.png" alt="">
             </div>
         </div>
 
     </section>
 
 
-
-    <!-- JAVASCRIPT -->
+    <!-- BEGINNER-FRIENDLY JAVASCRIPT -->
     <script>
 
-        /* Load contractor names first */
+        /* Contractor name lookup dictionary */
         let contractorLookup = {};
 
         fetch("https://raw.githubusercontent.com/JaY-III/COMP1020/refs/heads/main/data-contractors.json")
-            .then(response => response.json())
+            .then(res => res.json())
             .then(data => {
                 for (let i = 0; i < data.length; i++) {
                     contractorLookup[data[i].contractor_id] = data[i].company_name;
                 }
+
                 loadPlanned();
                 loadInProgress();
             });
 
+
         /* Load JSON planned projects */
-function loadPlanned() {
-    fetch("https://raw.githubusercontent.com/JaY-III/COMP1020/refs/heads/main/data-Planned.json")
-        .then(response => response.json())
-        .then(data => {
-            let table = document.getElementById("planned-table");
+        function loadPlanned() {
+            fetch("https://raw.githubusercontent.com/JaY-III/COMP1020/refs/heads/main/data-Planned.json")
+                .then(res => res.json())
+                .then(data => {
 
-            // FIX: Data is inside data.projects
-            let list = data.projects;
+                    // FIX: JSON stores data in "projects"
+                    let projects = data.projects;
+                    let table = document.getElementById("planned-table");
 
-            for (let i = 0; i < list.length; i++) {
-                let p = list[i];
+                    for (let i = 0; i < projects.length; i++) {
+                        let p = projects[i];
+                        let bidderName = contractorLookup[p.winning_bidder];
 
-                let bidderName = contractorLookup[p.winning_bidder];
-
-                table.innerHTML += `
-                    <tr>
-                        <td>${p.project_name}</td>
-                        <td>${p.project_status}</td>
-                        <td>${p.budget}</td>
-                        <td>${bidderName}</td>
-                        <td>${p.project_hq}</td>
-                    </tr>
-                `;
-            }
-        });
-}
+                        table.innerHTML += `
+                            <tr>
+                                <td>${p.project_name}</td>
+                                <td>${p.project_status}</td>
+                                <td>${p.budget}</td>
+                                <td>${bidderName}</td>
+                                <td>${p.project_hq}</td>
+                            </tr>
+                        `;
+                    }
+                });
+        }
 
 
         /* Load XML in-progress projects */
@@ -238,10 +237,10 @@ function loadPlanned() {
                 .then(str => (new DOMParser()).parseFromString(str, "text/xml"))
                 .then(xml => {
                     let table = document.getElementById("inprogress-table");
-                    let projects = xml.getElementsByTagName("Project");
+                    let items = xml.getElementsByTagName("Project");
 
-                    for (let i = 0; i < projects.length; i++) {
-                        let p = projects[i];
+                    for (let i = 0; i < items.length; i++) {
+                        let p = items[i];
 
                         let name = p.getElementsByTagName("project_name")[0].textContent;
                         let status = p.getElementsByTagName("project_status")[0].textContent;
@@ -268,4 +267,3 @@ function loadPlanned() {
 
 </body>
 </html>
-
