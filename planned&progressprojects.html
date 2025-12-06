@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Planned & In-Progress Projects</title>
     <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
@@ -27,13 +26,14 @@
     <!-- HERO -->
     <section class="hero-title">
         <h1>Planned & In-Progress Projects</h1>
-        <p>Below is a combined view of current projects pulled from JSON + XML data sources.</p>
+        <p>A combined overview of current project data from JSON and XML sources.</p>
     </section>
 
-    <!-- TABLES SECTION (Side-by-Side Layout) -->
+
+    <!-- ================= TABLES ================= -->
     <section class="table-section two-column-tables" style="padding: 0 40px;">
 
-        <!-- Planned Table -->
+        <!-- Planned Projects -->
         <div class="table-wrapper">
             <h2>Planned Projects (JSON)</h2>
 
@@ -41,7 +41,7 @@
                 <thead>
                     <tr>
                         <th>Project Name</th>
-                        <th>Project Status</th>
+                        <th>Status</th>
                         <th>Budget</th>
                         <th>Winning Bidder</th>
                         <th>Project HQ</th>
@@ -51,7 +51,7 @@
             </table>
         </div>
 
-        <!-- In-Progress Table -->
+        <!-- In-Progress Projects -->
         <div class="table-wrapper">
             <h2>In-Progress Projects (XML)</h2>
 
@@ -71,28 +71,38 @@
 
     </section>
 
-    <!-- SQL SECTION -->
+
+    <!-- ================= SQL SECTION ================= -->
    <section class="sql-section" style="padding:40px;">
-    <h2>SQL Queries Used</h2>
+    <h2 style="text-align:center;">SQL Queries Used</h2>
 
-    <h3>Projects Located in Ontario</h3>
+    <h3>1. Projects Located in Ontario</h3>
     <pre><code>
-SELECT Projects.*
+SELECT Projects.project_id,
+       Projects.project_name,
+       Projects.project_status,
+       Projects.budget,
+       Projects.winning_bidder,
+       Contractors.company_name AS winning_bidder_name,
+       Projects.project_hq
 FROM Projects
-JOIN Tenders   ON Projects.project_id = Tenders.project_id
-JOIN Provinces ON Tenders.province_id = Provinces.province_id
-WHERE Provinces.province_name = 'Ontario'
-GROUP BY Projects.project_id;
+JOIN Tenders     ON Projects.project_id = Tenders.project_id
+JOIN Provinces   ON Tenders.province_id = Provinces.province_id
+JOIN Contractors ON Tenders.contractor_id = Contractors.contractor_id
+WHERE Provinces.province_name = 'Ontario';
     </code></pre>
 
-    <h3>All In-Progress Projects</h3>
+    <h3>2. All In-Progress Projects</h3>
     <pre><code>
-SELECT *
+SELECT Projects.*,
+       Contractors.company_name AS winning_bidder_name
 FROM Projects
-WHERE project_status = 'In-Progress';
+LEFT JOIN Tenders     ON Projects.project_id = Tenders.project_id
+LEFT JOIN Contractors ON Tenders.contractor_id = Contractors.contractor_id
+WHERE Projects.project_status = 'In-Progress';
     </code></pre>
 
-    <h3>Count of Projects Assigned to Each Contractor</h3>
+    <h3>3. Count of Projects Assigned to Each Contractor</h3>
     <pre><code>
 SELECT Contractors.company_name,
        COUNT(Projects.project_id) AS number_of_projects
@@ -102,7 +112,14 @@ LEFT JOIN Projects
 GROUP BY Contractors.contractor_id, Contractors.company_name;
     </code></pre>
 
-    <h3>Total Budget by Province</h3>
+    <h3>4. Update the Status of a Project to Completed</h3>
+    <pre><code>
+UPDATE Projects
+SET project_status = 'Completed'
+WHERE project_id = 123;   -- Replace 123 with the actual project ID
+    </code></pre>
+
+    <h3>5. Total Budget of All Projects Grouped by Province</h3>
     <pre><code>
 SELECT Provinces.province_name,
        SUM(Projects.budget) AS total_budget
@@ -114,11 +131,22 @@ GROUP BY Provinces.province_name;
 </section>
 
 
-
-    <!-- ================= JS DATA LOADERS ================= -->
-
+    <!-- ================= JAVASCRIPT ================= -->
     <script>
-        /* ---------------- JSON (Planned Projects) ---------------- */
+
+        /*  1. Load contractor names for lookup */
+        let contractorLookup = {};
+
+        fetch('https://your-url-here/data-contractors.json')
+            .then(res => res.json())
+            .then(data => {
+                data.contractors.forEach(c => {
+                    contractorLookup[c.id] = c.name;
+                });
+            });
+
+
+        /* 2. Load Planned JSON Projects */
         fetch('https://jay-iii.github.io/COMP1020/data-Planned.json')
             .then(response => response.json())
             .then(data => {
@@ -130,7 +158,7 @@ GROUP BY Provinces.province_name;
                         <td>${project.project_name}</td>
                         <td>${project.project_status}</td>
                         <td>${project.budget}</td>
-                        <td>${project.winning_bidder}</td>
+                        <td>${contractorLookup[project.winning_bidder] || project.winning_bidder}</td>
                         <td>${project.project_hq}</td>
                     `;
                     tableBody.appendChild(row);
@@ -139,13 +167,14 @@ GROUP BY Provinces.province_name;
             .catch(error => console.error('Error fetching Planned Projects:', error));
 
 
-        /* ---------------- Helper for XML ---------------- */
+        /*  3. Helper for XML Extraction */
         const getXMLText = (parent, tag) => {
             const el = parent.getElementsByTagName(tag)[0];
             return el ? el.textContent : '';
         };
 
-        /* ---------------- XML (In-Progress Projects) ---------------- */
+
+        /*  4. Load In-Progress XML Projects */
         fetch('https://jay-iii.github.io/COMP1020/data-In-Progress.xml')
             .then(res => res.text())
             .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
@@ -154,20 +183,23 @@ GROUP BY Provinces.province_name;
                 const projects = xml.getElementsByTagName('Project');
 
                 Array.from(projects).forEach(project => {
+                    const bidderId = getXMLText(project, 'winning_bidder');
+                    const bidderName = contractorLookup[bidderId] || bidderId;
+
                     const row = document.createElement('tr');
                     row.innerHTML = `
                         <td>${getXMLText(project, 'project_name')}</td>
                         <td>${getXMLText(project, 'project_status')}</td>
                         <td>${getXMLText(project, 'budget')}</td>
-                        <td>${getXMLText(project, 'winning_bidder')}</td>
+                        <td>${bidderName}</td>
                         <td>${getXMLText(project, 'project_hq')}</td>
                     `;
                     tableBody.appendChild(row);
                 });
             })
             .catch(err => console.error('Error fetching In-Progress Projects:', err));
+
     </script>
 
 </body>
 </html>
-
