@@ -41,7 +41,7 @@ Our tables includes; Projects, Provinces, Contractors, Tenders. This allows trac
     From within the mySql Wortkbench application and after you have run the Setup_National_Database.sql
     Drag and Drop or "Ctrl + Shift + O" / File Open SQL Script -> Navigate to the location of " Queries_National_Database.sql "
     A new Tab will appear with the imported SQL script.
-    Highlight a code block you would like to test -> Click the Middler lightning bolt or Ctrl + Shift + Enter to run the script.
+    Highlight a code block you would like to test -> Click the Middle lightning bolt or Ctrl + Shift + Enter to run the script.
     You will see something like the image bellow if done correctly.
     
 ![Verrify_ Database.png](https://jay-iii.github.io/COMP1020/Verrify_ Database.png)
