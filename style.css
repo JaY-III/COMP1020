@@ -797,3 +797,18 @@ tr:nth-child(even) {
     min-width: 420px; 
 }
 
+/* WRAPPING FOR QUERIES */
+.sql-section {
+    max-width: 900px;     
+    margin: 0 auto;    
+}
+
+.sql-section pre {
+    background: #f0f4ff;
+    padding: 15px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 14px;
+    line-height: 1.4;
+    border: 1px solid #d0d6e5;
+}
