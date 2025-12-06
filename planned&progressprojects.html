@@ -203,29 +203,33 @@ GROUP BY Provinces.province_name;
             });
 
         /* Load JSON planned projects */
-        function loadPlanned() {
-            fetch("https://raw.githubusercontent.com/JaY-III/COMP1020/refs/heads/main/data-Planned.json")
-                .then(response => response.json())
-                .then(data => {
-                    let table = document.getElementById("planned-table");
+function loadPlanned() {
+    fetch("https://raw.githubusercontent.com/JaY-III/COMP1020/refs/heads/main/data-Planned.json")
+        .then(response => response.json())
+        .then(data => {
+            let table = document.getElementById("planned-table");
 
-                    for (let i = 0; i < data.length; i++) {
-                        let p = data[i];
+            // FIX: Data is inside data.projects
+            let list = data.projects;
 
-                        let bidderName = contractorLookup[p.winning_bidder];
+            for (let i = 0; i < list.length; i++) {
+                let p = list[i];
 
-                        table.innerHTML += `
-                            <tr>
-                                <td>${p.project_name}</td>
-                                <td>${p.project_status}</td>
-                                <td>${p.budget}</td>
-                                <td>${bidderName}</td>
-                                <td>${p.project_hq}</td>
-                            </tr>
-                        `;
-                    }
-                });
-        }
+                let bidderName = contractorLookup[p.winning_bidder];
+
+                table.innerHTML += `
+                    <tr>
+                        <td>${p.project_name}</td>
+                        <td>${p.project_status}</td>
+                        <td>${p.budget}</td>
+                        <td>${bidderName}</td>
+                        <td>${p.project_hq}</td>
+                    </tr>
+                `;
+            }
+        });
+}
+
 
         /* Load XML in-progress projects */
         function loadInProgress() {
@@ -264,3 +268,4 @@ GROUP BY Provinces.province_name;
 
 </body>
 </html>
+
