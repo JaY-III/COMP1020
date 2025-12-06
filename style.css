@@ -112,27 +112,25 @@ tbody tr:nth-child(even) {
 
 .sql-row {
     display: flex;
-    justify-content: space-between;
     gap: 20px;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
+    align-items: flex-start;
 }
 
-.sql-block,
-.sql-image {
-    width: 50%;
+.sql-block {
+    width: 70%;
     background: white;
     border: 1px solid #c8d3e8;
-    padding: 20px;
+    padding: 15px;
 }
 
-.sql-block pre {
-    background: #f7f9ff;
-    padding: 10px;
-    border: 1px solid #d7e0f3;
-    white-space: pre-wrap;
+.sql-image {
+    width: 30%;
 }
 
 .sql-image img {
     width: 100%;
+    height: auto;
     border: 1px solid #a8b3cc;
+    display: block;
 }
