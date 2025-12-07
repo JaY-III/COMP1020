@@ -74,6 +74,13 @@
     <!-- SIMPLE BEGINNER JAVASCRIPT -->
     <script>
 
+        /* Comma Helper */
+        function addCommas(x) {
+    if (!x) return x;
+    x = x.toString();
+    return x.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
         /* Contractor lookup table */
         var contractorLookup = {};
 
@@ -109,7 +116,7 @@
                 "<tr>" +
                 "<td>" + p.project_name + "</td>" +
                 "<td>" + p.project_status + "</td>" +
-                "<td>" + p.budget + "</td>" +
+                "<td>" + addCommas(p.budget) + "</td>" +
                 "<td>" + winner + "</td>" +
                 "<td>" + p.project_hq + "</td>" +
                 "</tr>";
@@ -144,7 +151,7 @@
                         "<tr>" +
                         "<td>" + name + "</td>" +
                         "<td>" + status + "</td>" +
-                        "<td>" + budget + "</td>" +
+                        "<td>" + addCommas(budget) + "</td>" +
                         "<td>" + bidderName + "</td>" +
                         "<td>" + hq + "</td>" +
                         "</tr>";
@@ -156,5 +163,6 @@
 
 </body>
 </html>
+
 
 
