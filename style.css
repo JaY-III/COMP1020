@@ -274,7 +274,7 @@ tbody tr:nth-child(even) {
 }
 
 .sql-image img {
-    width: 100%;
+    width: auto;
     height: auto;
     object-fit: contain;
 }
@@ -287,5 +287,6 @@ footer {
     color: white;
     margin-top: 40px;
 }
+
 
 
