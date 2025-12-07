@@ -78,6 +78,116 @@ header ul a:hover {
     font-size: 2rem;
 }
 
+/* Hero */
+
+.hero {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+/* Service Boxes */
+
+.service-boxes {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.service-box {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 28%;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    text-align: center;
+}
+
+.service-box h3 {
+    margin-bottom: 10px;
+}
+
+
+/* Process Steps */
+.process-steps {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.step {
+    width: 22%;
+    background: white;
+    text-align: center;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+
+/* About Page */
+.stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 40px 0;
+    text-align: center;
+}
+
+.stats div {
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    width: 28%;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+
+.mission-box {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    width: 90%;
+    margin: 20px auto;
+    max-width: 900px;
+}
+
+.team-section {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.team-members {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.team-card {
+    background: white;
+    padding: 20px;
+    width: 28%;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+
+.contact-card {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    width: 90%;
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+
 /* Tables */
 .table-section {
     width: 90%;
@@ -177,4 +287,5 @@ footer {
     color: white;
     margin-top: 40px;
 }
+
 
