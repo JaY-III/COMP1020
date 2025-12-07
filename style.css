@@ -271,17 +271,17 @@ tbody tr:nth-child(even) {
     width: 100%;
     background-color: #dfe6f5;
     border: 1px solid #b3bdd3;
-    padding: 10px;
-    display: block;
+    padding: 15px;
+    text-align: center;
 }
 
 .sql-image img {
-    width: 100%;
-    max-width: 600px; /* prevents tiny thumbnails */
-    height: auto;
     display: block;
+    max-width: 95%;     
+    max-height: 450px; 
     margin: 10px auto;
-    object-fit: contain; 
+    height: auto;
+    object-fit: contain;
 }
 
 
@@ -293,6 +293,7 @@ footer {
     color: white;
     margin-top: 40px;
 }
+
 
 
 
