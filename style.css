@@ -269,18 +269,18 @@ tbody tr:nth-child(even) {
 
 .sql-image {
     width: 100%;
-    max-height: 300px;
-    overflow: hidden;
     background-color: #dfe6f5;
     border: 1px solid #b3bdd3;
     display: flex;
     justify-content: center;
-	flex-direction: column;
     align-items: center;
+    padding: 10px;
 }
 
+
 .sql-image img {
-    
+
+	width: 100%;
     height: auto;
     object-fit: contain;
 	margin-bottom: 10px
@@ -294,6 +294,7 @@ footer {
     color: white;
     margin-top: 40px;
 }
+
 
 
 
