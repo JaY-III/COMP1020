@@ -298,11 +298,38 @@ footer {
     margin-top: 40px;
 }
 
+.process-footer {
+    background-color: #eef3fb;
+    padding: 40px 0;
+    margin-top: 60px;
+    border-top: 1px solid #d0d8ea;
+}
 
+.process-footer .simple-section {
+    max-width: 900px;
+    margin: 0 auto;
+}
 
+.process-footer h2 {
+    text-align: center;
+}
 
+.process-steps {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+}
 
+.process-steps .step {
+    width: 22%;
+    background: white;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
 
-
-
-
+.process-steps .step h3 {
+    margin: 0;
+    font-size: 1.1rem;
+}
