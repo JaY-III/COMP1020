@@ -1,67 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Projects>
-  <Project>
-    <project_id>10</project_id>
-    <project_name>McIlvenna Bay Foran Copper Mine Project</project_name>
-    <project_status>In-Progress</project_status>
-    <budget>$1.1 billion</budget>
-    <winning_bidder>7</winning_bidder>
-    <project_hq>East-Central Saskatchewan</project_hq>
-  </Project>
-  <Project>
-    <project_id>11</project_id>
-    <project_name>Red Chris Mine expansion</project_name>
-    <project_status>In-Progress</project_status>
-    <budget>$2.6 billion</budget>
-    <winning_bidder>5</winning_bidder>
-    <project_hq>Northwest British Columbia</project_hq>
-  </Project>
-  <Project>
-    <project_id>12</project_id>
-    <project_name>Critical Minerals Strategy</project_name>
-    <project_status>In-Progress</project_status>
-    <budget>$3.8 billion</budget>
-    <winning_bidder>2</winning_bidder>
-    <project_hq>Copper Cliff, Ontario</project_hq>
-  </Project>
-  <Project>
-    <project_id>13</project_id>
-    <project_name>Wind West Atlantic Energy</project_name>
-    <project_status>In-Progress</project_status>
-    <budget>$60 billion</budget>
-    <winning_bidder>3</winning_bidder>
-    <project_hq>Halifax, Nova Scotia</project_hq>
-  </Project>
-  <Project>
-    <project_id>14</project_id>
-    <project_name>Pathways Plus</project_name>
-    <project_status>In-Progress</project_status>
-    <budget>$16.5 billion</budget>
-    <winning_bidder>19</winning_bidder>
-    <project_hq>Wetaskiwin, Alberta</project_hq>
-  </Project>
-  <Project>
-    <project_id>15</project_id>
-    <project_name>Arctic Economic and Security Corridor</project_name>
-    <project_status>In-Progress</project_status>
-    <budget>$1 billion</budget>
-    <winning_bidder>11</winning_bidder>
-    <project_hq>Northwest Territories</project_hq>
-  </Project>
-  <Project>
-    <project_id>16</project_id>
-    <project_name>Port of Churchill Plus</project_name>
-    <project_status>In-Progress</project_status>
-    <budget>$262.5 million</budget>
-    <winning_bidder>18</winning_bidder>
-    <project_hq>Churchill, Manitoba</project_hq>
-  </Project>
-  <Project>
-    <project_id>17</project_id>
-    <project_name>Alto High-Speed Rail</project_name>
-    <project_status>In-Progress</project_status>
-    <budget>$90 billion</budget>
-    <winning_bidder>16</winning_bidder>
-    <project_hq>Toronto, Ontario</project_hq>
-  </Project>
+
+    <Project>
+        <project_id>10</project_id>
+        <project_name>McIlvenna Bay Foran Copper Mine Project</project_name>
+        <project_status>In-Progress</project_status>
+        <budget>1100000000</budget>
+        <winning_bidder>7</winning_bidder>
+        <project_hq>East-Central Saskatchewan</project_hq>
+    </Project>
+
+    <Project>
+        <project_id>11</project_id>
+        <project_name>Red Chris Mine expansion</project_name>
+        <project_status>In-Progress</project_status>
+        <budget>2600000000</budget>
+        <winning_bidder>5</winning_bidder>
+        <project_hq>Northwest British Columbia</project_hq>
+    </Project>
+
+    <Project>
+        <project_id>12</project_id>
+        <project_name>Critical Minerals Strategy</project_name>
+        <project_status>In-Progress</project_status>
+        <budget>3800000000</budget>
+        <winning_bidder>2</winning_bidder>
+        <project_hq>Copper Cliff, Ontario</project_hq>
+    </Project>
+
+    <Project>
+        <project_id>13</project_id>
+        <project_name>Wind West Atlantic Energy</project_name>
+        <project_status>In-Progress</project_status>
+        <budget>60000000000</budget>
+        <winning_bidder>3</winning_bidder>
+        <project_hq>Halifax, Nova Scotia</project_hq>
+    </Project>
+
+    <Project>
+        <project_id>14</project_id>
+        <project_name>Pathways Plus</project_name>
+        <project_status>In-Progress</project_status>
+        <budget>16500000000</budget>
+        <winning_bidder>19</winning_bidder>
+        <project_hq>Wetaskiwin, Alberta</project_hq>
+    </Project>
+
+    <Project>
+        <project_id>15</project_id>
+        <project_name>Arctic Economic and Security Corridor</project_name>
+        <project_status>In-Progress</project_status>
+        <budget>1000000000</budget>
+        <winning_bidder>11</winning_bidder>
+        <project_hq>Northwest Territories</project_hq>
+    </Project>
+
+    <Project>
+        <project_id>16</project_id>
+        <project_name>Port of Churchill Plus</project_name>
+        <project_status>In-Progress</project_status>
+        <budget>262500000</budget>
+        <winning_bidder>18</winning_bidder>
+        <project_hq>Churchill, Manitoba</project_hq>
+    </Project>
+
+    <Project>
+        <project_id>17</project_id>
+        <project_name>Alto High-Speed Rail</project_name>
+        <project_status>In-Progress</project_status>
+        <budget>90000000000</budget>
+        <winning_bidder>16</winning_bidder>
+        <project_hq>Toronto, Ontario</project_hq>
+    </Project>
+
 </Projects>

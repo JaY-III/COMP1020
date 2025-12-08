@@ -1,76 +1,74 @@
-{
-    "projects": [
-        {
-            "project_id": 1,
-            "project_name": "North Coast Transmission Line",
-            "project_status": "Planned",
-            "budget": "$6 billion",
-            "winning_bidder": 1,
-            "project_hq": "Northwest British Columbia"
-        },
-        {
-            "project_id": 2,
-            "project_name": "Northwest Critical Conservation Corridor",
-            "project_status": "Planned",
-            "budget": "$6 billion",
-            "winning_bidder": 6,
-            "project_hq": "Kitimat, British Columbia"
-        },
-        {
-            "project_id": 3,
-            "project_name": "Ksi Lisims LNG",
-            "project_status": "Planned",
-            "budget": "$10 billion",
-            "winning_bidder": 12,
-            "project_hq": "Pearse Island, British Columbia"
-        },
-        {
-            "project_id": 4,
-            "project_name": "Canada Nickel’s Crawford Project",
-            "project_status": "Planned",
-            "budget": "$6.8 billion",
-            "winning_bidder": 11,
-            "project_hq": "Timmins, Ontario"
-        },
-        {
-            "project_id": 5,
-            "project_name": "Nouveau Monde Graphite Matawinie Mine",
-            "project_status": "Planned",
-            "budget": "$421 million",
-            "winning_bidder": 5,
-            "project_hq": "Saint-Michel-des-Saints, Québec"
-        },
-        {
-            "project_id": 6,
-            "project_name": "Northcliff Resources’ Sisson Mine",
-            "project_status": "Planned",
-            "budget": "$579 million",
-            "winning_bidder": 12,
-            "project_hq": "Sisson Brook, New Brunswick"
-        },
-        {
-            "project_id": 7,
-            "project_name": "Iqaluit Nukkiksautiit Hydro Project",
-            "project_status": "Planned",
-            "budget": "$500 million",
-            "winning_bidder": 6,
-            "project_hq": "Iqaluit, Nunavut"
-        },
-        {
-            "project_id": 8,
-            "project_name": "Darlington New Nuclear Project",
-            "project_status": "Planned",
-            "budget": "$20.9 billion",
-            "winning_bidder": 15,
-            "project_hq": "Bowmanville, Ontario"
-        },
-        {
-            "project_id": 9,
-            "project_name": "Contrecœur Terminal Container Project",
-            "project_status": "Planned",
-            "budget": "$2.3 billion",
-            "winning_bidder": 14,
-            "project_hq": "Contrecœur, Québec"
-        }
-    ]
-}
+[
+	{
+		"project_id" : 1,
+		"project_name" : "North Coast Transmission Line",
+		"project_status" : "Planned",
+		"budget" : "6000000000",
+		"winning_bidder" : 1,
+		"project_hq" : "Northwest British Columbia"
+	},
+	{
+		"project_id" : 2,
+		"project_name" : "Northwest Critical Conservation Corridor",
+		"project_status" : "Planned",
+		"budget" : "6000000000",
+		"winning_bidder" : 6,
+		"project_hq" : "Kitimat, British Columbia"
+	},
+	{
+		"project_id" : 3,
+		"project_name" : "Ksi Lisims LNG",
+		"project_status" : "Planned",
+		"budget" : "10000000000",
+		"winning_bidder" : 12,
+		"project_hq" : "Pearse Island, British Columbia"
+	},
+	{
+		"project_id" : 4,
+		"project_name" : "Canada Nickel’s Crawford Project",
+		"project_status" : "Planned",
+		"budget" : "6800000000",
+		"winning_bidder" : 11,
+		"project_hq" : "Timmins, Ontario"
+	},
+	{
+		"project_id" : 5,
+		"project_name" : "Nouveau Monde Graphite Matawinie Mine",
+		"project_status" : "Planned",
+		"budget" : "421000000",
+		"winning_bidder" : 5,
+		"project_hq" : "Saint-Michel-des-Saints, Québec"
+	},
+	{
+		"project_id" : 6,
+		"project_name" : "Northcliff Resources’ Sisson Mine",
+		"project_status" : "Planned",
+		"budget" : "579000000",
+		"winning_bidder" : 12,
+		"project_hq" : "Sisson Brook, New Brunswick"
+	},
+	{
+		"project_id" : 7,
+		"project_name" : "Iqaluit Nukkiksautiit Hydro Project",
+		"project_status" : "Planned",
+		"budget" : "500000000",
+		"winning_bidder" : 6,
+		"project_hq" : "Iqaluit, Nunavut"
+	},
+	{
+		"project_id" : 8,
+		"project_name" : "Darlington New Nuclear Project",
+		"project_status" : "Planned",
+		"budget" : "20900000000",
+		"winning_bidder" : 15,
+		"project_hq" : "Bowmanville, Ontario"
+	},
+	{
+		"project_id" : 9,
+		"project_name" : "Contrecœur Terminal Container Project",
+		"project_status" : "Planned",
+		"budget" : "2300000000",
+		"winning_bidder" : 14,
+		"project_hq" : "Contrecœur, Québec"
+	}
+]

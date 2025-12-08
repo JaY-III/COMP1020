@@ -1,111 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Planned & In-Progress Projects</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+
+    <!-- Navigation Header -->
     <header>
-        
-        <div class="logo">
-    <span class="icon">⚡</span>
-    DREWCREW
-</div>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="projects.html" style="color:#4ea8ff">Projects</a></li>
-            <li><a href="planned.html">Planned & In-Progress</a></li>
-            <li><a href="sql.html">SQL</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-        </ul>
-    </header>
+    <div class="logo">⚡ DREWCREW</div>
+    <ul>
+        <li><a href="index.html" >Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="projects.html" style="color:#4ea8ff">Projects</a></li>
+        <li><a href="sql.html">SQL</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+</header>
 
-    <!-- HERO TITLE -->
-    <section class="hero-title">
-        <h1>Projects</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, blanditiis?</p>
-    </section>
+    <!-- Page Title Banner -->
+    <div class="page-banner">
+        <h1>Planned & In-Progress Projects</h1>
+        <p>Data loaded from JSON, XML, and contractor lookup.</p>
+    </div>
 
-    <!-- ABOUT SECTION -->
-    <section class="about-section">
-        <div class="about-text">
-            <h2>Who We Are</h2>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio magni unde quo impedit beatae
-                aspernatur odio doloribus animi?
-            </p>
-            <p>
-                With a team of skilled developers, designers, and IT specialists,
-                we turn your ideas into polished, functional, and modern results.
-            </p>
-        </div>
+    <!-- TABLE SECTION -->
+    <section class="table-section">
 
+        <div class="two-column-tables">
 
-    </section>
+            <!-- Planned JSON Table -->
+            <div class="table-wrapper">
+                <h2>Planned Projects (JSON)</h2>
 
-    <!-- STATS SECTION -->
-    <section class="stats">
-        <div>
-            <h2>150+</h2>
-            <p>Team Members</p>
-        </div>
-        <div>
-            <h2>2000+</h2>
-            <p>Happy Clients</p>
-        </div>
-        <div>
-            <h2>99%</h2>
-            <p>Client Satisfaction</p>
-        </div>
-    </section>
-
-    <!-- MISSION & VISION -->
-    <section class="mission-box">
-        <h2>Our Mission</h2>
-        <p>
-            To Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius velit eos alias aperiam aut porro qui, eum
-            animi temporibus sunt.
-        </p>
-
-        <h2 style="margin-top:40px;">Our Vision</h2>
-        <p>
-            To be a global leader in modern IT solutions, recognized for
-            innovation, creativity, and excellence in every project Lorem ipsum dolor sit amet consectetur adipisicing
-            elit. Veniam nam quis at quos voluptatibus.we deliver.
-        </p>
-    </section>
-
-    <!-- TEAM SECTION -->
-    <section class="team-section">
-        <h2>Meet Our Team</h2>
-
-        <div class="team-members">
-            <div class="team-card">
-               
-                <h3>Jordan Stella</h3>
-               
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Project Name</th>
+                            <th>Status</th>
+                            <th>Budget</th>
+                            <th>Winning Bidder</th>
+                            <th>Project HQ</th>
+                        </tr>
+                    </thead>
+                    <tbody id="planned-table"></tbody>
+                </table>
             </div>
 
-            <div class="team-card">
-               
-                <h3>Duru Elli</h3>
-                
+            <!-- In-Progress XML Table -->
+            <div class="table-wrapper">
+                <h2>In-Progress Projects (XML)</h2>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Status</th>
+                            <th>Budget</th>
+                            <th>Winning Bidder</th>
+                            <th>Project HQ</th>
+                        </tr>
+                    </thead>
+                    <tbody id="inprogress-table"></tbody>
+                </table>
             </div>
 
-            <div class="team-card">
-               
-                <h3>Mohammed Aishat</h3>
-                
-            </div>
         </div>
     </section>
+
+    <!-- SIMPLE BEGINNER JAVASCRIPT -->
+    <script>
+
+        /* Comma Helper */
+        function addCommas(x) {
+    if (!x) return x;
+    x = x.toString();
+    return x.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+        /* Contractor lookup table */
+        var contractorLookup = {};
+
+        /* Load contractor JSON */
+        fetch("data-contractors.json")
+            .then(response => response.json())
+            .then(contractors => {
+
+                for (var i = 0; i < contractors.length; i++) {
+                    contractorLookup[contractors[i].contractor_id] = contractors[i].company_name;
+                }
+
+                loadPlannedProjects();
+                loadInProgressProjects();
+
+            });
+
+        /* Load the planned JSON projects */
+   function loadPlannedProjects() {
+
+    fetch("data-Planned.json")
+        .then(r => r.json())
+        .then(data => {
+
+            var list = data; // <--- FIXED
+            var table = document.getElementById("planned-table");
+
+            for (var i = 0; i < list.length; i++) {
+                var p = list[i];
+                var winner = contractorLookup[p.winning_bidder];
+
+                table.innerHTML +=
+                "<tr>" +
+                "<td>" + p.project_name + "</td>" +
+                "<td>" + p.project_status + "</td>" +
+                "<td>" + addCommas(p.budget) + "</td>" +
+                "<td>" + winner + "</td>" +
+                "<td>" + p.project_hq + "</td>" +
+                "</tr>";
+            }
+        });
+}
+
+
+        /* Load in-progress XML projects */
+        function loadInProgressProjects() {
+
+            fetch("data-In-Progress.xml")
+                .then(r => r.text())
+                .then(text => (new DOMParser()).parseFromString(text, "text/xml"))
+                .then(xml => {
+
+                    var rows = xml.getElementsByTagName("Project");
+                    var table = document.getElementById("inprogress-table");
+
+                    for (var i = 0; i < rows.length; i++) {
+                        var p = rows[i];
+
+                        var name = p.getElementsByTagName("project_name")[0].textContent;
+                        var status = p.getElementsByTagName("project_status")[0].textContent;
+                        var budget = p.getElementsByTagName("budget")[0].textContent;
+                        var bidderID = p.getElementsByTagName("winning_bidder")[0].textContent;
+                        var hq = p.getElementsByTagName("project_hq")[0].textContent;
+
+                        var bidderName = contractorLookup[bidderID];
+
+                        table.innerHTML +=
+                        "<tr>" +
+                        "<td>" + name + "</td>" +
+                        "<td>" + status + "</td>" +
+                        "<td>" + addCommas(budget) + "</td>" +
+                        "<td>" + bidderName + "</td>" +
+                        "<td>" + hq + "</td>" +
+                        "</tr>";
+                    }
+                });
+        }
+
+    </script>
+
+<footer>
+    <h2>Our Proven Work Process</h2>
+
+    <div class="footer-steps">
+        <div class="footer-step">
+            <h3>01</h3>
+            <p>Consultation</p>
+        </div>
+
+        <div class="footer-step">
+            <h3>02</h3>
+            <p>Strategy</p>
+        </div>
+
+        <div class="footer-step">
+            <h3>03</h3>
+            <p>Implementation</p>
+        </div>
+
+        <div class="footer-step">
+            <h3>04</h3>
+            <p>Final Result</p>
+        </div>
+    </div>
+</footer>
+
+
+    
 </body>
-
-
 </html>
+
+
+
+
 

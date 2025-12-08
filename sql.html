@@ -1,108 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
-
+	
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>SQL Examples</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
+	
 <body>
-    <header>
-        <div class="logo">
-    <span class="icon">⚡</span>
-    DREWCREW
-</div>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="planned&progressprojects.html">Projects</a></li>
-            <li><a href="sql.html" style="color:#4ea8ff">SQL</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-        </ul>
-    </header>
+	
+<header>
+    <div class="logo">⚡ DREWCREW</div>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="sql.html" style="color:#4ea8ff">SQL</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+</header>
 
-    <!-- HERO TITLE -->
-    <section class="hero-title">
-        <h1>SQL</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, blanditiis?</p>
-    </section>
+    <!-- Page Title Banner -->
+    <div class="page-banner">
+        <h1>SQL Examples</h1>
+        <p>SQL Solutions customized to your needs</p>
+    </div>
 
-    <!-- ABOUT SECTION -->
-    <section class="about-section">
-        <div class="about-text">
-            <h2>Who We Are</h2>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio magni unde quo impedit beatae
-                aspernatur odio doloribus animi?
-            </p>
-            <p>
-                With a team of skilled developers, designers, and IT specialists,
-                we turn your ideas into polished, functional, and modern results.
-            </p>
-        </div>
+<!-- SQL QUERIES -->
+    <section class="sql-section">
+        <h2>SQL Queries Used</h2>
 
-
-    </section>
-
-    <!-- STATS SECTION -->
-    <section class="stats">
-        <div>
-            <h2>Decicated</h2>
-            <p>Team Members</p>
-        </div>
-        <div>
-            <h2>Satsfied</h2>
-            <p>Happy Clients</p>
-        </div>
-        <div>
-            <h2>Happy</h2>
-            <p>Client Satisfaction</p>
-        </div>
-
-    <!-- MISSION & VISION -->
-    <section class="mission-box">
-        <h2>Our Mission</h2>
-        <p>
-            To Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius velit eos alias aperiam aut porro qui, eum
-            animi temporibus sunt.
-        </p>
-
-        <h2 style="margin-top:40px;">Our Vision</h2>
-        <p>
-            To be a global leader in modern IT solutions, recognized for
-            innovation, creativity, and excellence in every project Lorem ipsum dolor sit amet consectetur adipisicing
-            elit. Veniam nam quis at quos voluptatibus.we deliver.
-        </p>
-    </section>
-
-    <!-- TEAM SECTION -->
-    <section class="team-section">
-        <h2>Meet Our Team</h2>
-
-        <div class="team-members">
-            <div class="team-card">
-               
-                <h3>Jordan Stella</h3>
-               
+        <!-- Query 1 -->
+        <div class="sql-row">
+            <div class="sql-block">
+                <h3>1. Projects Located in Ontario</h3>
+<pre>
+SELECT Projects.project_id AS 'Project ID',
+       Projects.project_name AS 'Project Name',
+       Projects.project_status AS 'Project Status',
+       FORMAT(Projects.budget, 2) AS 'Project Budget',
+       Projects.winning_bidder AS 'Winning Bidder',
+       Contractors.company_name AS 'Bidder_name',
+       Projects.project_hq AS 'Project AS'
+FROM Projects
+JOIN Tenders     ON Projects.project_id = Tenders.project_id 
+JOIN Provinces   ON Tenders.province_id = Provinces.province_id
+JOIN Contractors ON Tenders.contractor_id = Contractors.contractor_id
+WHERE Provinces.province_name = 'Ontario';
+</pre>
             </div>
 
-            <div class="team-card">
-               
-                <h3>Duru Elli</h3>
-                
-            </div>
-
-            <div class="team-card">
-               
-                <h3>Mohammed Aishat</h3>
-                
+            <div class="sql-image">
+			<a href="1.png">
+                    <img src="1.png">
+					</a>
             </div>
         </div>
+
+        <!-- Query 2 -->
+        <div class="sql-row">
+            <div class="sql-block">
+                <h3>2. All In-Progress Projects</h3>
+<pre>
+SELECT Projects.project_id AS 'Project ID',
+    Projects.project_status AS 'Project Status',
+    FORMAT (Projects.budget, 2) AS 'Budget',
+    Projects.winning_bidder AS 'Winning Bidder',
+	Contractors.company_name AS 'Winner',
+    Projects.project_hq AS 'Project HQ'
+FROM Projects
+LEFT JOIN Tenders     ON Projects.project_id = Tenders.project_id
+LEFT JOIN Contractors ON Tenders.contractor_id = Contractors.contractor_id
+WHERE Projects.project_status = 'In-Progress';
+</pre>
+            </div>
+
+            <div class="sql-image">
+			<a href="2.png">
+                       <img src="2.png">
+					   </a>
+              </div>
+        </div>
+
+        <!-- Query 3 -->
+        <div class="sql-row">
+            <div class="sql-block">
+                <h3>3. Count of Projects Assigned to Each Contractor</h3>
+<pre>
+SELECT Contractors.company_name AS 'Company Name',
+       COUNT(Projects.project_id) AS 'Total Projects'
+FROM Contractors
+LEFT JOIN Projects
+       ON Contractors.contractor_id = Projects.winning_bidder
+GROUP BY Contractors.contractor_id, Contractors.company_name
+ORDER BY 2 DESC
+LIMIT 15;
+</pre>
+            </div>
+
+            <div class="sql-image">
+                <a href="3.png">
+                    <img src="3.png">
+                </a>
+            </div>
+        </div>
+
+        <!-- Query 4 -->
+        <div class="sql-row">
+            <div class="sql-block">
+                <h3>4. Update Project Status</h3>
+<pre>
+SELECT *
+FROM Projects
+WHERE project_id = 12;
+
+UPDATE Projects
+SET project_status = 'Completed'
+WHERE project_id = 12;
+</pre>
+            </div>
+
+            <div class="sql-image">
+			<a href="4A.png">
+                <img src="4A.png">
+				</a>
+			
+				<a href="4B.png">
+                <img src="4B.png">
+				</a>
+            </div>
+        </div>
+
+        <!-- Query 5 -->
+        <div class="sql-row">
+            <div class="sql-block">
+                <h3>5. Total Budget of All Projects by Province</h3>
+<pre>
+SELECT Provinces.province_name AS Province,
+       FORMAT(SUM(Projects.budget), 2) AS 'Total Budget'
+FROM Projects
+INNER JOIN Tenders ON Projects.project_id = Tenders.project_id
+INNER JOIN Provinces ON Tenders.province_id = Provinces.province_id
+GROUP BY Provinces.province_name
+ORDER BY Province ASC;
+</pre>
+            </div>
+
+            <div class="sql-image">
+                <a href="5.png">
+                    <img src="5.png">
+                </a>
+            </div>
+        </div>
+
     </section>
+
+<footer>
+    <h2>Our Proven Work Process</h2>
+
+    <div class="footer-steps">
+        <div class="footer-step">
+            <h3>01</h3>
+            <p>Consultation</p>
+        </div>
+
+        <div class="footer-step">
+            <h3>02</h3>
+            <p>Strategy</p>
+        </div>
+
+        <div class="footer-step">
+            <h3>03</h3>
+            <p>Implementation</p>
+        </div>
+
+        <div class="footer-step">
+            <h3>04</h3>
+            <p>Final Result</p>
+        </div>
+    </div>
+</footer>
+
+
 </body>
-
 </html>
+
+
+
+
+
 
 
