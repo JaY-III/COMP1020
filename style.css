@@ -291,51 +291,44 @@ tbody tr:nth-child(even) {
 
 /* Footer */
 footer {
-    text-align: center;
-    padding: 15px;
     background-color: #0b1b3f;
     color: white;
-    margin-top: 40px;
-}
-
-.process-footer {
-    background-color: #eef3fb;
-    padding: 50px 0;
-    margin-top: 60px;
-    border-top: 1px solid #d0d8ea;
-}
-
-.process-footer .simple-section {
-    max-width: 900px;
-    margin: 0 auto;
+    padding: 50px 20px;
     text-align: center;
+    margin-top: 60px;
 }
 
-.process-footer h2 {
-    font-size: 1.6rem;
-    margin-bottom: 25px;
+footer h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 35px;
+    letter-spacing: 0.5px;
 }
 
-.process-steps {
+/* Footer Steps Layout */
+.footer-steps {
     display: flex;
     justify-content: center;
-    gap: 25px;
+    gap: 35px;
 }
 
-.process-steps .step {
-    width: 22%;
-    min-width: 150px;
-    background: white;
-    text-align: center;
-    padding: 18px 10px;
-    border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.12);
-}
-
-.process-steps .step h3 {
-    margin: 0;
-    font-size: 1rem;
-    line-height: 1.4rem;
+.footer-step {
+    width: 180px;
+    background-color: white;
     color: #0b1b3f;
+    padding: 18px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+.footer-step h3 {
+    margin: 0;
+    font-size: 1.3rem;
     font-weight: bold;
+}
+
+.footer-step p {
+    margin-top: 8px;
+    font-size: 1rem;
 }
