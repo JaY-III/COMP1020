@@ -42,7 +42,7 @@ SELECT Projects.project_id AS 'Project ID',
        FORMAT(Projects.budget, 2) AS 'Project Budget',
        Projects.winning_bidder AS 'Winning Bidder',
        Contractors.company_name AS 'Bidder_name',
-       Projects.project_hq AS 'Project AS'
+       Projects.project_hq AS 'Project HQ'
 FROM Projects
 JOIN Tenders     ON Projects.project_id = Tenders.project_id 
 JOIN Provinces   ON Tenders.province_id = Provinces.province_id
@@ -67,7 +67,7 @@ SELECT Projects.project_id AS 'Project ID',
     Projects.project_status AS 'Project Status',
     FORMAT (Projects.budget, 2) AS 'Budget',
     Projects.winning_bidder AS 'Winning Bidder',
-	Contractors.company_name AS 'Winner',
+    Contractors.company_name AS 'Winner',
     Projects.project_hq AS 'Project HQ'
 FROM Projects
 LEFT JOIN Tenders     ON Projects.project_id = Tenders.project_id
@@ -185,6 +185,7 @@ ORDER BY Province ASC;
 
 </body>
 </html>
+
 
 
 
