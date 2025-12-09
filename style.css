@@ -1,4 +1,4 @@
-/* Basic page styling */
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -10,7 +10,7 @@ h1, h2, h3 {
     margin: 0 0 15px 0;
 }
 
-/* About / Home / Contact shared content section */
+
 .simple-section {
     max-width: 900px;
     margin: 0 auto;
@@ -27,7 +27,7 @@ h1, h2, h3 {
 }
 
 
-/* Navigation header */
+
 header {
     background-color: #0b1b3f;
     color: white;
@@ -65,7 +65,7 @@ header ul a:hover {
     color: #4ea8ff;
 }
 
-/* Page title banner */
+
 .page-banner {
     background-color: #132b5c;
     color: white;
@@ -78,7 +78,7 @@ header ul a:hover {
     font-size: 2rem;
 }
 
-/* Hero */
+
 
 .hero {
     text-align: center;
@@ -94,7 +94,6 @@ header ul a:hover {
     margin-top: 10px;
 }
 
-/* Service Boxes */
 
 .service-boxes {
     display: flex;
@@ -116,7 +115,6 @@ header ul a:hover {
 }
 
 
-/* Process Steps */
 .process-steps {
     display: flex;
     justify-content: space-between;
@@ -132,7 +130,7 @@ header ul a:hover {
     box-shadow: 0 3px 10px rgba(0,0,0,0.15);
 }
 
-/* About Page */
+
 .stats {
     display: flex;
     justify-content: space-around;
@@ -188,7 +186,7 @@ header ul a:hover {
 }
 
 
-/* Tables */
+
 .table-section {
     width: 90%;
     margin: auto;
@@ -228,7 +226,7 @@ tbody tr:nth-child(even) {
     background-color: #f3f6fc;
 }
 
-/* SQL Section */
+
 .sql-section {
     padding: 40px 5%;
 }
@@ -289,7 +287,7 @@ tbody tr:nth-child(even) {
 }
 
 
-/* Footer */
+
 footer {
     background-color: #0b1b3f;
     color: white;
@@ -305,7 +303,8 @@ footer h2 {
     letter-spacing: 0.5px;
 }
 
-/* Footer Steps Layout */
+
+
 .footer-steps {
     display: flex;
     justify-content: center;
@@ -332,3 +331,4 @@ footer h2 {
     margin-top: 8px;
     font-size: 1rem;
 }
+
