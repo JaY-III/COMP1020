@@ -13,7 +13,9 @@ With so many large projects underway across different provinces, contractors, an
 Our database was created to support that goal. By organizing key information—such as project status, budget, province, and contractor—in a single connected system, the National Infrastructure Project Database makes it easier for oversight bodies like the Infrastructure Coordination Commission (ICC) to understand what is happening across the country. This structure allows users to quickly search, filter, and analyze projects, helping decision-makers monitor spending, identify delays, and better support communities that need investment the most.
 
 Sources:
+
 [Federal Infrastructure Spending – Update](https://www.pbo-dpb.ca/en/publications/RP-2526-010-S--federal-infrastructure-spending-update--depenses-federales-infrastructures-mise-jour)
+
 [$349B needed now to close infrastructure gap by 2030, Assembly of First Nations says in report](https://www.cbc.ca/news/indigenous/afn-infrastructure-gap-estimate-report-1.7167220)
 
 
