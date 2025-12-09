@@ -6,7 +6,7 @@ Duru Elli, Aishat Mohammed, Jordan Stella
 
 ## Problem Statement & Overview
 
-Canada is preparing for a major wave of infrastructure investment. According to the Parliamentary Budget Officer, the federal government is projected to spend over $159 billion on infrastructure between 2025-26 and 2029-30. At the same time, national reports highlight a significant infrastructure gap across Indigenous and remote communities, where many areas still face challenges related to housing, water access, and essential public services. This gap continues to widen without proper planning and oversight, making it difficult for the country to grow in a fair and balanced way.
+Canada is entering a major period of federal infrastructure investment, with over $159 billion in planned spending between 2025 and 2030, as reported by the Parliamentary Budget Officer. With so many new projects expected across multiple provinces and sectors, federal departments face a growing challenge: tracking large-scale infrastructure work in a clear, consistent, and organized way. As spending expands, the need for a reliable system to monitor budgets, timelines, and project outcomes becomes even more important.
 
 With so many large projects underway across different provinces, contractors, and regions, one of the biggest challenges is simply keeping track of everything. Projects can fall behind schedule, go over budget, or stall without clear reporting. When information is scattered across departments or stored in different formats, it becomes difficult for government organizations to monitor progress, compare costs, or make informed decisions. A centralized system helps ensure transparency, accountability, and consistent reporting across all major infrastructure projects.
 
