@@ -147,7 +147,7 @@ SELECT Projects.project_id AS 'Project ID',
        Projects.project_status AS 'Project Status',
        FORMAT(Projects.budget, 2) AS 'Project Budget',
        Projects.winning_bidder AS 'Winning Bidder',
-       Contractors.company_name AS 'Bidder_name',
+       Contractors.company_name AS 'Bidder Name',
        Projects.project_hq AS 'Project HQ'
 FROM Projects
 JOIN Tenders     ON Projects.project_id = Tenders.project_id 
