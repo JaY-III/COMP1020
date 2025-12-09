@@ -9,7 +9,6 @@
 
 <body>
 
-    <!-- Navigation Header -->
     <header>
     <div class="logo">⚡ DREWCREW</div>
     <ul>
@@ -21,13 +20,13 @@
     </ul>
 </header>
 
-    <!-- Page Title Banner -->
+
     <div class="page-banner">
         <h1>Planned & In-Progress Projects</h1>
         <p>Data loaded from JSON, XML, and contractor lookup.</p>
     </div>
 
-    <!-- TABLE SECTION -->
+
     <section class="table-section">
 
         <div class="two-column-tables">
@@ -50,7 +49,7 @@
                 </table>
             </div>
 
-            <!-- In-Progress XML Table -->
+
             <div class="table-wrapper">
                 <h2>In-Progress Projects (XML)</h2>
 
@@ -71,20 +70,20 @@
         </div>
     </section>
 
-    <!-- JAVASCRIPT -->
+
     <script>
 
-        /* Comma Helper */
+
         function addCommas(x) {
     if (!x) return x;
     x = x.toString();
     return x.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-        /* Contractor lookup table */
+
         var contractorLookup = {};
 
-        /* Load contractor JSON */
+
         fetch("data-contractors.json")
             .then(response => response.json())
             .then(contractors => {
@@ -98,7 +97,7 @@
 
             });
 
-        /* Load the planned JSON projects */
+
    function loadPlannedProjects() {
 
     fetch("data-Planned.json")
@@ -125,7 +124,6 @@
 }
 
 
-        /* Load in-progress XML projects */
         function loadInProgressProjects() {
 
             fetch("data-In-Progress.xml")
@@ -191,6 +189,7 @@
     
 </body>
 </html>
+
 
 
 
