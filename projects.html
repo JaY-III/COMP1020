@@ -81,7 +81,7 @@ function addCommas(num) {
 var contractorLookup = {};
 
 
-fetch("jay-iii.github.io/COMP1020/data-contractors.json")
+fetch("https://jay-iii.github.io/COMP1020/data-contractors.json")
     .then(res => res.json())
     .then(data => {
 
@@ -98,7 +98,7 @@ fetch("jay-iii.github.io/COMP1020/data-contractors.json")
 
 function loadPlannedProjects() {
 
-    fetch("./data-Planned.json")
+    fetch("https://jay-iii.github.io/COMP1020/data-Planned.json")
         .then(res => res.json())
         .then(list => {
 
@@ -124,7 +124,7 @@ function loadPlannedProjects() {
 
 function loadXMLProjects() {
 
-    fetch("jay-iii.github.io/COMP1020/data-In-Progress.xml")
+    fetch("https://jay-iii.github.io/COMP1020/data-In-Progress.xml")
         .then(res => res.text())
         .then(text => {
 
@@ -188,7 +188,6 @@ function loadXMLProjects() {
     
 </body>
 </html>
-
 
 
 
