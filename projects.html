@@ -31,7 +31,7 @@
 
         <div class="two-column-tables">
 
-            <!-- Planned JSON Table -->
+
             <div class="table-wrapper">
                 <h2>Planned Projects (JSON)</h2>
 
@@ -71,93 +71,87 @@
     </section>
 
 
-    <script>
+<script>
 
-
-        function addCommas(x) {
-    if (!x) return x;
-    x = x.toString();
-    return x.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+function addCommas(num) {
+    if (!num) return num;
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-
-        var contractorLookup = {};
-
-
-        fetch("data-contractors.json")
-            .then(response => response.json())
-            .then(contractors => {
-
-                for (var i = 0; i < contractors.length; i++) {
-                    contractorLookup[contractors[i].contractor_id] = contractors[i].company_name;
-                }
-
-                loadPlannedProjects();
-                loadInProgressProjects();
-
-            });
+var contractorLookup = {};
 
 
-   function loadPlannedProjects() {
+fetch("data-contractors.json")
+    .then(res => res.json())
+    .then(data => {
+
+        for (var i = 0; i < data.length; i++) {
+            contractorLookup[data[i].contractor_id] = data[i].company_name;
+        }
+
+        loadPlanned();
+        loadXML();
+    });
+
+
+function loadPlanned() {
 
     fetch("data-Planned.json")
-        .then(r => r.json())
-        .then(data => {
+        .then(res => res.json())
+        .then(list => {
 
-            var list = data;
             var table = document.getElementById("planned-table");
 
             for (var i = 0; i < list.length; i++) {
                 var p = list[i];
-                var winner = contractorLookup[p.winning_bidder];
 
                 table.innerHTML +=
-                "<tr>" +
-                "<td>" + p.project_name + "</td>" +
-                "<td>" + p.project_status + "</td>" +
-                "<td>" + addCommas(p.budget) + "</td>" +
-                "<td>" + winner + "</td>" +
-                "<td>" + p.project_hq + "</td>" +
-                "</tr>";
+                    "<tr>" +
+                    "<td>" + p.project_name + "</td>" +
+                    "<td>" + p.project_status + "</td>" +
+                    "<td>" + addCommas(p.budget) + "</td>" +
+                    "<td>" + contractorLookup[p.winning_bidder] + "</td>" +
+                    "<td>" + p.project_hq + "</td>" +
+                    "</tr>";
             }
         });
 }
 
 
-        function loadInProgressProjects() {
+function loadXML() {
 
-            fetch("data-In-Progress.xml")
-                .then(r => r.text())
-                .then(text => (new DOMParser()).parseFromString(text, "text/xml"))
-                .then(xml => {
+    fetch("data-In-Progress.xml")
+        .then(res => res.text())
+        .then(text => {
 
-                    var rows = xml.getElementsByTagName("Project");
-                    var table = document.getElementById("inprogress-table");
+            var xml = new window.DOMParser().parseFromString(text, "text/xml");
 
-                    for (var i = 0; i < rows.length; i++) {
-                        var p = rows[i];
+            var rows = xml.getElementsByTagName("ROW");
+            var table = document.getElementById("inprogress-table");
 
-                        var name = p.getElementsByTagName("project_name")[0].textContent;
-                        var status = p.getElementsByTagName("project_status")[0].textContent;
-                        var budget = p.getElementsByTagName("budget")[0].textContent;
-                        var bidderID = p.getElementsByTagName("winning_bidder")[0].textContent;
-                        var hq = p.getElementsByTagName("project_hq")[0].textContent;
+            for (var i = 0; i < rows.length; i++) {
 
-                        var bidderName = contractorLookup[bidderID];
+                var p = rows[i];
 
-                        table.innerHTML +=
-                        "<tr>" +
-                        "<td>" + name + "</td>" +
-                        "<td>" + status + "</td>" +
-                        "<td>" + addCommas(budget) + "</td>" +
-                        "<td>" + bidderName + "</td>" +
-                        "<td>" + hq + "</td>" +
-                        "</tr>";
-                    }
-                });
-        }
+                var name = p.getElementsByTagName("project_name")[0].textContent;
+                var status = p.getElementsByTagName("project_status")[0].textContent;
+                var budget = p.getElementsByTagName("budget")[0].textContent;
+                var bidder = p.getElementsByTagName("winning_bidder")[0].textContent;
+                var hq = p.getElementsByTagName("project_hq")[0].textContent;
 
-    </script>
+                table.innerHTML +=
+                    "<tr>" +
+                    "<td>" + name + "</td>" +
+                    "<td>" + status + "</td>" +
+                    "<td>" + addCommas(budget) + "</td>" +
+                    "<td>" + contractorLookup[bidder] + "</td>" +
+                    "<td>" + hq + "</td>" +
+                    "</tr>";
+            }
+        });
+}
+
+</script>
 
 <footer>
     <h2>Our Proven Work Process</h2>
@@ -189,6 +183,7 @@
     
 </body>
 </html>
+
 
 
 
