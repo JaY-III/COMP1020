@@ -81,7 +81,7 @@ function addCommas(num) {
 var contractorLookup = {};
 
 
-fetch("./data-contractors.json")
+fetch("jay-iii.github.io/COMP1020/data-contractors.json")
     .then(res => res.json())
     .then(data => {
 
@@ -124,7 +124,7 @@ function loadPlannedProjects() {
 
 function loadXMLProjects() {
 
-    fetch("./data-In-Progress.xml")
+    fetch("jay-iii.github.io/COMP1020/data-In-Progress.xml")
         .then(res => res.text())
         .then(text => {
 
@@ -188,6 +188,7 @@ function loadXMLProjects() {
     
 </body>
 </html>
+
 
 
 
