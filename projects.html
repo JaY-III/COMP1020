@@ -81,36 +81,40 @@ function addCommas(num) {
 var contractorLookup = {};
 
 
-fetch("data-contractors.json")
+fetch("./data-contractors.json")
     .then(res => res.json())
     .then(data => {
+
 
         for (var i = 0; i < data.length; i++) {
             contractorLookup[data[i].contractor_id] = data[i].company_name;
         }
 
-        loadPlanned();
-        loadXML();
+        loadPlannedProjects();
+        loadXMLProjects();
     });
 
 
-function loadPlanned() {
 
-    fetch("data-Planned.json")
+function loadPlannedProjects() {
+
+    fetch("./data-Planned.json")
         .then(res => res.json())
         .then(list => {
 
             var table = document.getElementById("planned-table");
 
             for (var i = 0; i < list.length; i++) {
+
                 var p = list[i];
+                var winnerName = contractorLookup[p.winning_bidder];
 
                 table.innerHTML +=
                     "<tr>" +
                     "<td>" + p.project_name + "</td>" +
                     "<td>" + p.project_status + "</td>" +
                     "<td>" + addCommas(p.budget) + "</td>" +
-                    "<td>" + contractorLookup[p.winning_bidder] + "</td>" +
+                    "<td>" + winnerName + "</td>" +
                     "<td>" + p.project_hq + "</td>" +
                     "</tr>";
             }
@@ -118,19 +122,18 @@ function loadPlanned() {
 }
 
 
-function loadXML() {
+function loadXMLProjects() {
 
-    fetch("data-In-Progress.xml")
+    fetch("./data-In-Progress.xml")
         .then(res => res.text())
         .then(text => {
 
-            var xml = new window.DOMParser().parseFromString(text, "text/xml");
+            var xml = new DOMParser().parseFromString(text, "text/xml");
+            var rows = xml.getElementsByTagName("Project");
 
-            var rows = xml.getElementsByTagName("ROW");
             var table = document.getElementById("inprogress-table");
 
             for (var i = 0; i < rows.length; i++) {
-
                 var p = rows[i];
 
                 var name = p.getElementsByTagName("project_name")[0].textContent;
@@ -139,12 +142,14 @@ function loadXML() {
                 var bidder = p.getElementsByTagName("winning_bidder")[0].textContent;
                 var hq = p.getElementsByTagName("project_hq")[0].textContent;
 
+                var bidderName = contractorLookup[bidder];
+
                 table.innerHTML +=
                     "<tr>" +
                     "<td>" + name + "</td>" +
                     "<td>" + status + "</td>" +
                     "<td>" + addCommas(budget) + "</td>" +
-                    "<td>" + contractorLookup[bidder] + "</td>" +
+                    "<td>" + bidderName + "</td>" +
                     "<td>" + hq + "</td>" +
                     "</tr>";
             }
@@ -183,6 +188,7 @@ function loadXML() {
     
 </body>
 </html>
+
 
 
 
