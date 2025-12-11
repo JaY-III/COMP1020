@@ -60,7 +60,7 @@ This is best demonstrated using the Entity-Relationship Diagram (ERD).
     4. Highlight a code block you would like to test -> Click the Middle lightning bolt or Ctrl + Shift + Enter to run the script.
     5. You will see something like the image below if done correctly.
     
-![Working](https://jay-iii.github.io/COMP1020/Verrify_Database.png)
+![Working](https://jay-iii.github.io/COMP1020/Verify_Database.png)
 
  
         
